@@ -6,6 +6,14 @@ var orderSchema = new mongoose.Schema({
 		product: { type: mongoose.Schema.Types.ObjectId, ref: 'Product' },
 		quantity: Number
 	}],
+	leiding: {
+		type: Boolean,
+		"default": false
+	},
+	helper: {
+		type: Boolean,
+		"default": false
+	},
 	total_price: Number,
 	created_at: {
 		type: Date,

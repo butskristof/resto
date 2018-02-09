@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var ctrlProduct = require('../controllers/product.controller');
+var ctrlOrder = require('../controllers/order.controller');
 
 // product routes
 router
@@ -10,5 +11,13 @@ router
 
 router
 	.get('/products/:productid', ctrlProduct.productsGetOne);
+
+// order routes
+router
+	.get('/orders', ctrlOrder.ordersGetAll)
+	.post('/orders', ctrlOrder.ordersAddOne);
+
+router
+	.get('/orders/:orderid', ctrlOrder.ordersGetOne);
 
 module.exports = router;
