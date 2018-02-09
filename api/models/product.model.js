@@ -34,7 +34,4 @@ productSchema.pre('save', function (next) {
 	next();
 });
 
-// var Product = mongoose.model('Product', ProductSchema);
-//
-// module.exports = Product;
 mongoose.model('Product', productSchema);
