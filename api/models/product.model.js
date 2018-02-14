@@ -1,11 +1,11 @@
 var mongoose = require('mongoose');
 
-var categorySchema =  new mongoose.Schema({
-	name: {
-		type: String,
-		required: true
-	}
-});
+// var categorySchema =  new mongoose.Schema({
+// 	name: {
+// 		type: String,
+// 		required: true
+// 	}
+// });
 
 var productSchema = new mongoose.Schema({
 	name: {
@@ -14,7 +14,7 @@ var productSchema = new mongoose.Schema({
 		unique: true
 	},
 	price: Number,
-	category: categorySchema,
+	// category: categorySchema,
 	created_at: {
 		type: Date,
 		"default": Date.now
