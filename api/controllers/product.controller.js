@@ -114,3 +114,33 @@ module.exports.productsUpdateOne = function (req, res) {
 		})
 };
 
+module.exports.productsDeleteOne = function (req, res) {
+	Product
+		.findById(req.params.productid, function(err, productToDelete) {
+			if (err) {
+				res
+					.status(400)
+					.json(err);
+			} else if (productToDelete == null) {
+				res
+					.status(400) // correct?
+					.json({
+						"message" : "Product ID not found"
+					});
+			} else {
+				productToDelete.remove(
+					function(err, deletedProduct) {
+						if (err) {
+							res
+								.status(400)
+								.json(err);
+						} else {
+							res
+								.status(200)
+								.json(deletedProduct);
+						}
+					});
+			}
+		});
+};
+

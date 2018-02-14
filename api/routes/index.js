@@ -11,7 +11,8 @@ router
 
 router
 	.get('/products/:productid', ctrlProduct.productsGetOne)
-	.put('/products/:productid', ctrlProduct.productsUpdateOne);
+	.put('/products/:productid', ctrlProduct.productsUpdateOne)
+	.delete('/products/:productid', ctrlProduct.productsDeleteOne);
 
 // order routes
 router
