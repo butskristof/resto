@@ -2,8 +2,6 @@ var mongoose = require('mongoose');
 var Product = mongoose.model('Product');
 
 module.exports.productsGetAll = function (req, res) {
-	console.log("GET all products");
-
 	// set default offset and count
 	var offset = 0;
 	var count = 10;
@@ -36,9 +34,7 @@ module.exports.productsGetAll = function (req, res) {
 			.skip(offset)
 			.limit(count)
 			.exec(function (err, products) {
-				console.log(err);
 				if (err) {
-					console.log("Error getting products.");
 					res
 						.status(500)
 						.json(err);
@@ -63,11 +59,9 @@ module.exports.productsGetOne = function (req, res) {
 			};
 
 			if (err) {
-				console.log("Error getting product.");
 				response.status = 500;
 				response.message = err;
 			} else if (!doc) {
-				console.log("Product ID not found.");
 				response.status = 404;
 				response.message = {
 					"message": "Product ID not found"
@@ -81,7 +75,6 @@ module.exports.productsGetOne = function (req, res) {
 };
 
 module.exports.productsAddOne = function (req, res) {
-	console.log("POST new product");
 
 	Product
 		.create({
@@ -90,16 +83,34 @@ module.exports.productsAddOne = function (req, res) {
 			// category: req.body.category
 		}, function (err, product) {
 			if (err) {
-				console.log("Error creating product.")
 				res
 					.status(400)
 					.json(err);
 			} else {
-				console.log("Product added.");
 				res
 					.status(201)
 					.json(product);
 			}
 		});
+};
+
+module.exports.productsUpdateOne = function (req, res) {
+	Product
+		.findByIdAndUpdate(req.params.productid, {
+			$set: {
+				name: req.body.name,
+				price: parseFloat(req.body.price)
+			}
+		}, function (err, updatedProduct) {
+			if (err) {
+				res
+					.status(400)
+					.json(err);
+			} else {
+				res
+					.status(201)
+					.json(updatedProduct);
+			}
+		})
 };
 

@@ -10,7 +10,8 @@ router
 	.post('/products', ctrlProduct.productsAddOne);
 
 router
-	.get('/products/:productid', ctrlProduct.productsGetOne);
+	.get('/products/:productid', ctrlProduct.productsGetOne)
+	.put('/products/:productid', ctrlProduct.productsUpdateOne);
 
 // order routes
 router
