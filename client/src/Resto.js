@@ -177,12 +177,13 @@ class Resto extends React.Component {
 								selectedValue={this.state.discount}
 								onChange={this.updateDiscount}
 								>
-								<Radio value={"none"} />Geen
-								<Radio value={"leiding"} />Leiding
-								<Radio value={"helper"} />Helper
+								<div className={'korting'}><Radio value={"none"} id={'none'}/><label htmlFor={'none'}>Geen</label></div>
+								<div className={'korting'}><Radio value={"leiding"} id={'leiding'}/><label htmlFor={'leiding'}>Leiding</label> </div>
+								<div className={'korting'}><Radio value={"helper"} id={'helper'}/><label htmlFor={'helper'}>Helper</label></div>
 							</RadioGroup>
 						</div>
 
+						<div className={'afrekening'}>
 						<p><strong>Totaal te ontvangen:</strong>
 							<Currency
 								quantity={this.state.totalprice}
@@ -207,6 +208,7 @@ class Resto extends React.Component {
 						>
 							Clear
 						</button>
+						</div>
 					</div>
 				</div>
 			</main>

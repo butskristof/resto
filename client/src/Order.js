@@ -26,7 +26,9 @@ class Order extends React.Component {
 			return (
 				<tr key={key}>
 					<td>{product.name}</td>
-					<td>{this.state.order[key]}
+					<td>
+					<div className={'number'}>{this.state.order[key]}</div>
+					<div className={'add'}>
 					<button
 						className={'btn btn-sm btn-primary'}
 						onClick={() => this.props.add(key)}
@@ -39,6 +41,7 @@ class Order extends React.Component {
 							>
 							-
 						</button>
+					</div>
 					</td>
 					<td><Currency quantity={product.price} currency={"EUR"} /></td>
 					<td><Currency quantity={product.price * this.state.order[key]} currency={"EUR"} /></td>

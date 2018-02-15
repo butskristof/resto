@@ -28,12 +28,50 @@ body {
       font-weight: bold; }
     body #root main .row .col-sm:nth-of-type(2) table {
       width: 100%;
-      border: 1px solid #A6A8AC;
+      border: 2px solid black;
       font-family: monospace;
       font-size: 15px;
       text-align: center; }
       body #root main .row .col-sm:nth-of-type(2) table thead {
         font-weight: bold;
         border-bottom: 2px dashed black; }
-      body #root main .row .col-sm:nth-of-type(2) table tr td button {
-        height: 50%; }
+      body #root main .row .col-sm:nth-of-type(2) table tr {
+        height: 60px; }
+        body #root main .row .col-sm:nth-of-type(2) table tr:nth-of-type(1) {
+          height: 30px; }
+        body #root main .row .col-sm:nth-of-type(2) table tr td .number {
+          width: 50%;
+          float: left;
+          padding-top: 10px; }
+        body #root main .row .col-sm:nth-of-type(2) table tr td .add {
+          width: 50%;
+          float: right; }
+          body #root main .row .col-sm:nth-of-type(2) table tr td .add button {
+            height: 20px;
+            width: 100%;
+            margin-bottom: 0px;
+            line-height: 10px;
+            border-radius: 0px; }
+            body #root main .row .col-sm:nth-of-type(2) table tr td .add button:nth-of-type(1) {
+              background: #8BC53F;
+              border: 1px #8BC53F; }
+            body #root main .row .col-sm:nth-of-type(2) table tr td .add button:nth-of-type(2) {
+              background: #ED2920;
+              border: 1px #ED2920; }
+    body #root main .row .col-sm:nth-of-type(2) .discount {
+      width: 100%; }
+      body #root main .row .col-sm:nth-of-type(2) .discount div {
+        width: 100%; }
+        body #root main .row .col-sm:nth-of-type(2) .discount div .korting {
+          width: 33%;
+          float: left;
+          text-align: center; }
+          body #root main .row .col-sm:nth-of-type(2) .discount div .korting input {
+            margin-right: 5px;
+            cursor: pointer; }
+          body #root main .row .col-sm:nth-of-type(2) .discount div .korting label {
+            cursor: pointer; }
+    body #root main .row .col-sm:nth-of-type(2) .afrekening {
+      position: relative;
+      bottom: 0px;
+      right: 0px; }
