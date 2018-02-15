@@ -21,6 +21,7 @@ class Menu extends React.Component {
 	render() {
 		let mappedProducts = Object.keys(this.state.products).map((key) => {
 			let product = this.state.products[key];
+			console.log(product);
 			let category = this.state.categories[product.category];
 
 			let style = "menuButton btn btn-primary";
