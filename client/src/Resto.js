@@ -66,10 +66,11 @@ class Resto extends React.Component {
 	}
 
 	updateChange(event) {
-		let cashin= 0;
-		if (event.target.value !== "" || event.target.value !== null) {
-			cashin = parseFloat(event.target.value);
-		}
+		// let cashin = 0;
+		// if (event.target.value !== "" || event.target.value !== null) {
+		// 	cashin = parseFloat(event.target.value);
+		// }
+		let cashin = event.target.value;
 
 		this.setState({
 			cashin: cashin,
@@ -78,10 +79,18 @@ class Resto extends React.Component {
 	}
 
 	calculateChange() {
-		let diff = this.state.cashin - this.state.totalprice;
-		this.setState({
-			change: diff,
-		});
+		let cashin = parseFloat(this.state.cashin);
+		if (!isNaN(cashin)) {
+			let diff = this.state.cashin - this.state.totalprice;
+			this.setState({
+				change: diff,
+			});
+		} else {
+			this.setState({
+				change: "/",
+			})
+		}
+
 	}
 
 	componentDidMount() {
@@ -158,6 +167,9 @@ class Resto extends React.Component {
 
 
 	render() {
+
+		let change = isNaN(this.state.change) ? this.state.change : (<Currency quantity={this.state.change} currency={"EUR"} />);
+
 		return(
 			<main>
 				<div className={'row'}>
@@ -199,7 +211,7 @@ class Resto extends React.Component {
 						<p>Cash gekregen:
 							<input type="text" onChange={this.updateChange} value={this.state.cashin} />
 						</p>
-						<p><strong>Terug te geven: </strong> <Currency quantity={this.state.change} currency={"EUR"} /></p>
+						<p><strong>Terug te geven: </strong> {change}</p>
 
 						<button
 							className={'btn btn-primary'}
