@@ -16,6 +16,7 @@ class Product extends React.Component {
 
 		this.toggleEditing = this.toggleEditing.bind(this);
 		this.display = this.display.bind(this);
+		this.edit = this.edit.bind(this);
 		this.onUpdate = this.onUpdate.bind(this);
 		this.onDelete = this.onDelete.bind(this);
 		this.updateName = this.updateName.bind(this);
@@ -28,6 +29,12 @@ class Product extends React.Component {
 			editing: !this.state.editing,
 		});
 	}
+
+	// componentWillReceiveProps(nextProps) {
+	// 	this.setState({
+	// 		categories: nextProps.categories,
+	// 	});
+	// }
 
 	onUpdate() {
 		let price = parseFloat(this.state.price);
@@ -84,6 +91,8 @@ class Product extends React.Component {
 				</option>
 			);
 		});
+
+
 		return(
 			<div>
 				<li
@@ -93,7 +102,7 @@ class Product extends React.Component {
 					<input type="text" value={this.state.name} name={'name'} onChange={this.updateName} />
 					<input type="text" value={this.state.price} name={'price'} onChange={this.updatePrice} />
 
-					<select onChange={this.updateCategory}>
+					<select onChange={this.updateCategory} defaultValue={this.state.currentCategory} >
 						{mappedCategories}
 					</select>
 
@@ -115,6 +124,11 @@ class Product extends React.Component {
 	}
 
 	display() {
+		let categoryname = "";
+		if (this.props.categories[this.state.currentCategory]) {
+			categoryname = this.props.categories[this.state.currentCategory].name;
+		}
+
 		return(
 			<div>
 				<li
@@ -123,7 +137,7 @@ class Product extends React.Component {
 					// type="button"
 					onClick={this.toggleEditing}
 				>
-					{this.state.name} - <Currency quantity={this.state.price} currency={"EUR"} /> - {this.state.currentCategory}
+					{this.state.name} - <Currency quantity={this.state.price} currency={"EUR"} /> - {categoryname}
 				</li>
 			</div>
 		);

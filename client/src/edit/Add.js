@@ -9,7 +9,7 @@ class Add extends React.Component{
 			name: "",
 			price: 0,
 			categories: this.props.categories,
-			currentCategory: ""
+			currentCategory: this.props.category
 		};
 
 		this.updateName = this.updateName.bind(this);
@@ -22,7 +22,7 @@ class Add extends React.Component{
 	componentWillReceiveProps(nextProps) {
 		this.setState({
 			categories: nextProps.categories,
-			currentCategory: Object.keys(nextProps.categories)[0],
+			currentCategory: nextProps.category,
 		});
 	}
 
