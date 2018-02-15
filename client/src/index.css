@@ -1,0 +1,15 @@
+body {
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+}
+
+.menuButton {
+	width: 100%;
+	display: block;
+	margin: 10px;
+}
+
+.order > table {
+	width: 100%;
+}
