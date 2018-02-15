@@ -1,5 +1,6 @@
 import React from 'react';
 import Currency from 'react-currency-formatter';
+import NumericInput from 'react-numeric-input';
 import axios from 'axios';
 
 class Product extends React.Component {
@@ -15,7 +16,8 @@ class Product extends React.Component {
 
 		this.toggleEditing = this.toggleEditing.bind(this);
 		this.display = this.display.bind(this);
-		this.onSubmit = this.onSubmit.bind(this);
+		this.onUpdate = this.onUpdate.bind(this);
+		this.onDelete = this.onDelete.bind(this);
 		this.updateName = this.updateName.bind(this);
 		this.updatePrice = this.updatePrice.bind(this);
 	}
@@ -26,8 +28,23 @@ class Product extends React.Component {
 		});
 	}
 
-	onSubmit() {
-		axios.put('/api/products/' + this.state.id, {name: this.state.name, price: this.state.price})
+	onUpdate() {
+		let price = parseFloat(this.state.price);
+
+		if (!isNaN(price)) {
+			axios
+				.put('/api/products/' + this.state.id, {name: this.state.name, price: price})
+				.then((result) => {
+					// console.log(result);
+				});
+			this.toggleEditing();
+		}
+
+	}
+
+	onDelete() {
+		axios
+			.delete('/api/products/' + this.state.id)
 			.then((result) => {
 				console.log(result);
 			});
@@ -35,7 +52,7 @@ class Product extends React.Component {
 	}
 
 	updateName(event) {
-		let name = parseFloat(event.target.value);
+		let name = event.target.value;
 
 		this.setState({
 			name: name
@@ -43,8 +60,7 @@ class Product extends React.Component {
 	}
 
 	updatePrice(event) {
-		let price = parseFloat(event.target.value);
-
+		let price = event.target.value;
 		this.setState({
 			price: price
 		});
@@ -62,9 +78,15 @@ class Product extends React.Component {
 
 					<button
 						className={'btn btn-primary'}
-						onClick={this.onSubmit}
+						onClick={this.onUpdate}
 					>
 						Update
+					</button>
+					<button
+						className={'btn btn-danger'}
+						onClick={this.onDelete}
+					>
+						Delete
 					</button>
 				</li>
 			</div>
@@ -87,7 +109,6 @@ class Product extends React.Component {
 	}
 
 	render() {
-
 		let content = this.state.editing ? this.edit() : this.display();
 
 		return content;

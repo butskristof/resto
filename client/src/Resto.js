@@ -65,7 +65,10 @@ class Resto extends React.Component {
 	}
 
 	updateChange(event) {
-		let cashin = parseFloat(event.target.value);
+		let cashin= 0;
+		if (event.target.value !== "") {
+			cashin = parseFloat(event.target.value);
+		}
 
 		this.setState({
 			cashin: cashin,
