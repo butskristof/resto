@@ -13,22 +13,9 @@ class Edit extends React.Component {
 
 	componentDidMount() {
 		this.getData();
-		// axios
-		// 	.get('/api/products')
-		// 	.then((response) => {
-		// 		let prod = {};
-		// 		for (let i = 0; i < response.data.length; ++i) {
-		// 			prod[response.data[i]._id] = response.data[i];
-		// 		}
-		//
-		// 		this.setState({
-		// 			products: prod,
-		// 		});
-		// 	});
 	}
 
 	getData() {
-		console.log('here');
 		axios
 			.get('/api/products')
 			.then((response) => {
