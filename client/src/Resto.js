@@ -97,11 +97,13 @@ class Resto extends React.Component {
 
 		axios.get('/api/categories')
 			.then((response) => {
+				// console.log(response.data);
 				let categories = {};
 				for (let i = 0; i < response.data.length; ++i) {
 					categories[response.data[i]._id] = response.data[i];
 				}
-
+				// console.log(categories)
+				//
 				this.setState({
 					categories: categories,
 				});

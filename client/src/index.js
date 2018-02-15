@@ -6,6 +6,5 @@ import Edit from './edit/Edit';
 import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(<Resto />, document.getElementById('root'));
-
-//ReactDOM.render(<Edit />, document.getElementById('edit'));
+// ReactDOM.render(<Edit />, document.getElementById('root'));
 registerServiceWorker();

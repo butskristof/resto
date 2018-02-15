@@ -9,17 +9,20 @@ class Add extends React.Component{
 			name: "",
 			price: 0,
 			categories: this.props.categories,
+			currentCategory: ""
 		};
 
 		this.updateName = this.updateName.bind(this);
 		this.updatePrice = this.updatePrice.bind(this);
 		this.addProduct = this.addProduct.bind(this);
 		this.clear = this.clear.bind(this);
+		this.updateCategory = this.updateCategory.bind(this);
 	}
 
 	componentWillReceiveProps(nextProps) {
 		this.setState({
 			categories: nextProps.categories,
+			currentCategory: Object.keys(nextProps.categories)[0],
 		});
 	}
 
@@ -47,11 +50,19 @@ class Add extends React.Component{
 		let price = parseFloat(this.state.price);
 
 		if (this.state.name !== "" && this.state.name !== null && !isNaN(price)) {
+			console.log(this.state.currentCategory);
 			axios
-				.post('/api/products', {name: this.state.name, price: this.state.price})
+				.post('/api/products', {name: this.state.name, price: this.state.price, category: this.state.currentCategory})
 				.then(this.clear)
 				.then(this.props.callback);
 		}
+	}
+
+	updateCategory(event) {
+		this.setState({
+			currentCategory: event.target.value,
+		})
+
 	}
 
 	render() {
@@ -59,7 +70,7 @@ class Add extends React.Component{
 		let mappedCategories = Object.keys(this.state.categories).map((key) => {
 			let category = this.state.categories[key];
 				return (
-					<option key={category._id}>
+					<option key={category._id} value={category._id}>
 						{category.name}
 					</option>
 				);
@@ -67,7 +78,7 @@ class Add extends React.Component{
 
 		return (
 			<div>
-				<h2>Add</h2>
+				<h2>Toevoegen</h2>
 
 				<form>
 					<div className={'form-group'}>
@@ -79,7 +90,7 @@ class Add extends React.Component{
 						<input type="text" className={'form-control'} id={'price'} value={this.state.price} name={'price'} onChange={this.updatePrice} />
 					</div>
 
-					<select>
+					<select onChange={this.updateCategory}>
 						{mappedCategories}
 					</select>
 

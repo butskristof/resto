@@ -29,15 +29,13 @@ class Menu extends React.Component {
 				style = category.style;
 			}
 
-			console.log(style);
-
 			return (
 				<Product
 					name={product.name}
 					price={product.price}
 					id={key}
 					key={key}
-					style={style}
+					styles={style}
 					onClick={() => this.props.addToOrder(key)}
 				/>
 			);

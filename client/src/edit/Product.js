@@ -1,6 +1,5 @@
 import React from 'react';
 import Currency from 'react-currency-formatter';
-import NumericInput from 'react-numeric-input';
 import axios from 'axios';
 
 class Product extends React.Component {
@@ -47,7 +46,8 @@ class Product extends React.Component {
 			.delete('/api/products/' + this.state.id)
 			.then((result) => {
 				console.log(result);
-			});
+			})
+			.then(this.props.callback);
 		this.toggleEditing();
 	}
 
