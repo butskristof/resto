@@ -92,10 +92,6 @@ class Resto extends React.Component {
 			});
 	}
 
-	submitOrder() {
-
-	}
-
 	clear() {
 		this.setState({
 			order: {},
