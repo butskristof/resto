@@ -13,13 +13,15 @@ class Product extends React.Component {
 	}
 
 	render() {
+
+
 		return (
 			<button
-				className={'menuButton btn btn-primary'}
+				className={"btn " + this.props.style}
 				type="button"
 				onClick={() => this.props.onClick(this.state.id)}
 				>
-				{this.state.name} - <Currency quantity={this.state.price} currency={"EUR"} /> EUR
+				{this.state.name} - <Currency quantity={this.state.price} currency={"EUR"} />
 			</button>
 		);
 	}

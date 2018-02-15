@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
-var Product = mongoose.model('Product');
+var Category = mongoose.model('Category');
 
-module.exports.productsGetAll = function (req, res) {
+module.exports.categoriesGetAll = function (req, res) {
 	// set default offset and count
 	var offset = 0;
 	var count = 10;
@@ -29,27 +29,27 @@ module.exports.productsGetAll = function (req, res) {
 			});
 		return;
 	} else {
-		Product
+		Category
 			.find()
 			.skip(offset)
 			.limit(count)
-			.exec(function (err, products) {
+			.exec(function (err, categories) {
 				if (err) {
 					res
 						.status(500)
 						.json(err);
 				} else {
 					res
-						.json(products);
+						.json(categories);
 				}
 			});
 	}
 };
 
-module.exports.productsGetOne = function (req, res) {
-	var id = req.params.productid;
+module.exports.categoriesGetOne = function (req, res) {
+	var id = req.params.categoryid;
 
-	Product
+	Category
 		.findById(id)
 		.exec(function(err, doc) {
 			// set default
@@ -64,7 +64,7 @@ module.exports.productsGetOne = function (req, res) {
 			} else if (!doc) {
 				response.status = 404;
 				response.message = {
-					"message": "Product ID not found"
+					"message": "Category ID not found"
 				};
 			}
 
@@ -74,14 +74,12 @@ module.exports.productsGetOne = function (req, res) {
 		});
 };
 
-module.exports.productsAddOne = function (req, res) {
-
-	Product
+module.exports.categoriesAddOne = function (req, res) {
+	Category
 		.create({
 			name: req.body.name,
-			price: parseFloat(req.body.price),
-			category: req.body.category
-		}, function (err, product) {
+			style: req.body.style
+		}, function (err, category) {
 			if (err) {
 				res
 					.status(400)
@@ -89,20 +87,19 @@ module.exports.productsAddOne = function (req, res) {
 			} else {
 				res
 					.status(201)
-					.json(product);
+					.json(category);
 			}
 		});
 };
 
-module.exports.productsUpdateOne = function (req, res) {
-	Product
-		.findByIdAndUpdate(req.params.productid, {
+module.exports.categoriesUpdateOne = function (req, res) {
+	Category
+		.findByIdAndUpdate(req.params.categoryid, {
 			$set: {
 				name: req.body.name,
-				price: parseFloat(req.body.price),
-				category: req.body.category
+				style: req.body.style
 			}
-		}, function (err, updatedProduct) {
+		}, function (err, updatedCategory) {
 			if (err) {
 				res
 					.status(400)
@@ -110,27 +107,27 @@ module.exports.productsUpdateOne = function (req, res) {
 			} else {
 				res
 					.status(201)
-					.json(updatedProduct);
+					.json(updatedCategory);
 			}
 		})
 };
 
-module.exports.productsDeleteOne = function (req, res) {
-	Product
-		.findById(req.params.productid, function(err, productToDelete) {
+module.exports.categoriesDeleteOne = function (req, res) {
+	Category
+		.findById(req.params.categoryid, function(err, categoryToDelete) {
 			if (err) {
 				res
 					.status(400)
 					.json(err);
-			} else if (productToDelete == null) {
+			} else if (categoryToDelete == null) {
 				res
 					.status(400) // correct?
 					.json({
-						"message" : "Product ID not found"
+						"message" : "Category ID not found"
 					});
 			} else {
-				productToDelete.remove(
-					function(err, deletedProduct) {
+				categoryToDelete.remove(
+					function(err, deletedCategory) {
 						if (err) {
 							res
 								.status(400)
@@ -138,10 +135,9 @@ module.exports.productsDeleteOne = function (req, res) {
 						} else {
 							res
 								.status(200)
-								.json(deletedProduct);
+								.json(deletedCategory);
 						}
 					});
 			}
 		});
 };
-

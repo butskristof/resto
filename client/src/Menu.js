@@ -7,24 +7,37 @@ class Menu extends React.Component {
 		super(props);
 		this.state = {
 			products: this.props.products,
+			categories: this.props.categories,
 		};
 	}
 
 	componentWillReceiveProps(nextProps) {
 		this.setState({
 			products: nextProps.products,
+			categories: nextProps.categories,
 		});
 	}
 
 	render() {
 		let mappedProducts = Object.keys(this.state.products).map((key) => {
 			let product = this.state.products[key];
+			let category = this.state.categories[product.category];
+
+			let style = "menuButton btn btn-primary";
+			if (category) {
+				console.log(category.style);
+				style = category.style;
+			}
+
+			console.log(style);
+
 			return (
 				<Product
 					name={product.name}
 					price={product.price}
 					id={key}
 					key={key}
+					style={style}
 					onClick={() => this.props.addToOrder(key)}
 				/>
 			);

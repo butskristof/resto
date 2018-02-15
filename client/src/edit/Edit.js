@@ -8,6 +8,7 @@ class Edit extends React.Component {
 		super();
 		this.state = {
 			products: {},
+			categories: {}
 		};
 	}
 
@@ -26,6 +27,18 @@ class Edit extends React.Component {
 
 				this.setState({
 					products: prod,
+				});
+			});
+
+		axios.get('/api/categories')
+			.then((response) => {
+				let categories = {};
+				for (let i = 0; i < response.data.length; ++i) {
+					categories[response.data[i]._id] = response.data[i];
+				}
+
+				this.setState({
+					categories: categories,
 				});
 			});
 	}
@@ -53,7 +66,7 @@ class Edit extends React.Component {
 					{mappedProducts}
 				</ul>
 
-				<Add test={this.getData}/>
+				<Add test={this.getData} categories={this.state.categories} />
 			</div>
 		);
 	}

@@ -3,17 +3,24 @@ import axios from 'axios';
 
 class Add extends React.Component{
 
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.state ={
 			name: "",
 			price: 0,
+			categories: this.props.categories,
 		};
 
 		this.updateName = this.updateName.bind(this);
 		this.updatePrice = this.updatePrice.bind(this);
 		this.addProduct = this.addProduct.bind(this);
 		this.clear = this.clear.bind(this);
+	}
+
+	componentWillReceiveProps(nextProps) {
+		this.setState({
+			categories: nextProps.categories,
+		});
 	}
 
 	updateName(event) {
@@ -48,6 +55,16 @@ class Add extends React.Component{
 	}
 
 	render() {
+
+		let mappedCategories = Object.keys(this.state.categories).map((key) => {
+			let category = this.state.categories[key];
+				return (
+					<option key={category._id}>
+						{category.name}
+					</option>
+				);
+			});
+
 		return (
 			<div>
 				<h2>Add</h2>
@@ -62,6 +79,9 @@ class Add extends React.Component{
 						<input type="text" className={'form-control'} id={'price'} value={this.state.price} name={'price'} onChange={this.updatePrice} />
 					</div>
 
+					<select>
+						{mappedCategories}
+					</select>
 
 					<button
 						className={'btn btn-primary'}

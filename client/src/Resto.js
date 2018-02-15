@@ -17,6 +17,7 @@ class Resto extends React.Component {
 			cashin: 0,
 			change: 0,
 			discount: "none",
+			categories: {}
 		};
 
 		this.updateChange = this.updateChange.bind(this);
@@ -93,6 +94,18 @@ class Resto extends React.Component {
 					products: prod,
 				});
 			});
+
+		axios.get('/api/categories')
+			.then((response) => {
+				let categories = {};
+				for (let i = 0; i < response.data.length; ++i) {
+					categories[response.data[i]._id] = response.data[i];
+				}
+
+				this.setState({
+					categories: categories,
+				});
+			});
 	}
 
 	clear() {
@@ -146,6 +159,7 @@ class Resto extends React.Component {
 					<div className={'col-sm'}>
 						<Menu
 							products={this.state.products}
+							categories={this.state.categories}
 							addToOrder={(id) => this.addProduct(id)}
 						/>
 					</div>

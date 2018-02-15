@@ -3,6 +3,7 @@ var router = express.Router();
 
 var ctrlProduct = require('../controllers/product.controller');
 var ctrlOrder = require('../controllers/order.controller');
+var ctrlCategory = require('../controllers/category.controller');
 
 // product routes
 router
@@ -21,5 +22,15 @@ router
 
 router
 	.get('/orders/:orderid', ctrlOrder.ordersGetOne);
+
+// category routes
+router
+	.get('/categories', ctrlCategory.categoriesGetAll)
+	.post('/categories', ctrlCategory.categoriesAddOne);
+
+router
+	.get('/categories/:categoryid', ctrlCategory.categoriesGetOne)
+	.put('/categories/:categoryid', ctrlCategory.categoriesUpdateOne)
+	.delete('/categories/:categoryid', ctrlCategory.categoriesDeleteOne);
 
 module.exports = router;

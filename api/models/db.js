@@ -46,3 +46,4 @@ process.on('SIGTERM', function() {
 // BRING IN YOUR SCHEMAS & MODELS
 require('./product.model');
 require('./order.model');
+require('./category.model');
