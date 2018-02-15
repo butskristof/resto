@@ -17,7 +17,7 @@ class Product extends React.Component {
 
 		return (
 			<button
-				className={"btn " + this.props.style}
+				className={"btn " + this.props.styles}
 				type="button"
 				onClick={() => this.props.onClick(this.state.id)}
 				>

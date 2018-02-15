@@ -63,7 +63,7 @@ class Edit extends React.Component {
 
 		return(
 			<div>
-				<h2>Edit</h2>
+				<h2>Bewerken</h2>
 
 				<ul className={'list-group'}>
 					{mappedProducts}

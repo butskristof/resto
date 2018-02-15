@@ -1,6 +1,5 @@
 import React from 'react';
 import Currency from 'react-currency-formatter';
-import NumericInput from 'react-numeric-input';
 import axios from 'axios';
 
 class Product extends React.Component {

@@ -67,7 +67,7 @@ class Add extends React.Component{
 
 		return (
 			<div>
-				<h2>Add</h2>
+				<h2>Toevoegen</h2>
 
 				<form>
 					<div className={'form-group'}>

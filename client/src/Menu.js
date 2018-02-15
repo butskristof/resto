@@ -37,7 +37,7 @@ class Menu extends React.Component {
 					price={product.price}
 					id={key}
 					key={key}
-					style={style}
+					styles={style}
 					onClick={() => this.props.addToOrder(key)}
 				/>
 			);
