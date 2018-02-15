@@ -8,11 +8,9 @@ var bodyParser = require('body-parser');
 
 var cors = require('cors');
 
-var index = require('./routes/index'); // default routes for normal web access
-
 var app = express();
 
-app.use(cors());
+// app.use(cors());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -26,13 +24,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// routes for web access
-//app.use('/', index);
-app.use(express.static(path.join(__dirname, 'client/build')));
-
 // set up api access
 var api = require('./api/routes');
 app.use('/api', api);
+
+// routes for web access
+// app.use(express.static(path.join(__dirname, 'client/build')));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

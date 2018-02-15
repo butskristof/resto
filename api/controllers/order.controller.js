@@ -2,8 +2,6 @@ var mongoose = require('mongoose');
 var Order = mongoose.model('Order');
 
 module.exports.ordersGetAll = function (req, res) {
-	console.log("GET all orders");
-
 	// set default offset and count
 	var offset = 0;
 	var count = 10;
@@ -37,9 +35,7 @@ module.exports.ordersGetAll = function (req, res) {
 			.skip(offset)
 			.limit(count)
 			.exec(function (err, orders) {
-				// console.log(err);
 				if (err) {
-					console.log("Error getting orders.");
 					res
 						.status(500)
 						.json(err);
@@ -64,11 +60,9 @@ module.exports.ordersGetOne = function (req, res) {
 			};
 
 			if (err) {
-				console.log("Error getting order.");
 				response.status = 500;
 				response.message = err;
 			} else if (!doc) {
-				console.log("Order ID not found.");
 				response.status = 404;
 				response.message = {
 					"message": "Order ID not found"
@@ -82,9 +76,6 @@ module.exports.ordersGetOne = function (req, res) {
 };
 
 module.exports.ordersAddOne = function (req, res) {
-	console.log("POST new order");
-	console.log(req.body);
-
 	Order
 		.create({
 			products: req.body.orderlines,
@@ -93,12 +84,10 @@ module.exports.ordersAddOne = function (req, res) {
 			helper: req.body.helper
 		}, function (err, order) {
 			if (err) {
-				console.log("Error creating order.")
 				res
 					.status(400)
 					.json(err);
 			} else {
-				console.log("Order added.");
 				res
 					.status(201)
 					.json(order);
