@@ -83,31 +83,14 @@ module.exports.ordersGetOne = function (req, res) {
 
 module.exports.ordersAddOne = function (req, res) {
 	console.log("POST new order");
+	console.log(req.body);
 
 	Order
 		.create({
-
-			/*
-				var orderSchema = new mongoose.Schema({
-
-					products: [{
-						product: { type: mongoose.Schema.Types.ObjectId, ref: 'Product' },
-						quantity: Number
-					}],
-					total_price: Number,
-					created_at: {
-						type: Date,
-						"default": Date.now
-					},
-					updated_at: Date
-				});
-			 */
-			products: [
-				{
-					product: "5a7ddbc45851a2a1b4c77900",
-					quantity: 2
-				}
-			]
+			products: req.body.orderlines,
+			total_price: req.body.totalprice,
+			leiding: req.body.leiding,
+			helper: req.body.helper
 		}, function (err, order) {
 			if (err) {
 				console.log("Error creating order.")
