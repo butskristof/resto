@@ -1,11 +1,12 @@
 var mongoose = require('mongoose');
-var dburl = 'mongodb://localhost:27017/resto';
+var dburl = process.env.MONGOLAB_URI;
+// var dburl = 'mongodb://localhost:27017/resto';
 var retry = null;
 mongoose.connect(dburl);
 
 // CONNECTION EVENTS
 mongoose.connection.on('connected', function() {
-	console.log('Mongoose connected to ' + dburl);
+	console.log('Mongoose connected');
 });
 mongoose.connection.on('error', function(err) {
 	console.log('Mongoose connection error: ' + err);
