@@ -27,7 +27,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // routes for web access
-app.use('/', index);
+//app.use('/', index);
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 // set up api access
 var api = require('./api/routes');
