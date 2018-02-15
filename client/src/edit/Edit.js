@@ -55,6 +55,8 @@ class Edit extends React.Component {
 					price={product.price}
 					id={key}
 					key={key}
+					categories={this.state.categories}
+					category={product.category}
 					callback={this.getData}
 					// onClick={() => this.props.addToOrder(key)}
 				/>

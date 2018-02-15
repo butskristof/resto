@@ -10,6 +10,7 @@ class Product extends React.Component {
 			price: this.props.price,
 			id: this.props.id,
 			key: this.key,
+			currentCategory: this.props.category,
 			editing: false
 		};
 
@@ -19,6 +20,7 @@ class Product extends React.Component {
 		this.onDelete = this.onDelete.bind(this);
 		this.updateName = this.updateName.bind(this);
 		this.updatePrice = this.updatePrice.bind(this);
+		this.updateCategory = this.updateCategory.bind(this);
 	}
 
 	toggleEditing() {
@@ -32,7 +34,7 @@ class Product extends React.Component {
 
 		if (!isNaN(price)) {
 			axios
-				.put('/api/products/' + this.state.id, {name: this.state.name, price: price})
+				.put('/api/products/' + this.state.id, {name: this.state.name, price: price, category: this.state.currentCategory})
 				.then((result) => {
 					// console.log(result);
 				});
@@ -66,7 +68,22 @@ class Product extends React.Component {
 		});
 	}
 
+	updateCategory(event) {
+		this.setState({
+			currentCategory: event.target.value,
+		})
+
+	}
+
 	edit() {
+		let mappedCategories = Object.keys(this.props.categories).map((key) => {
+			let category = this.props.categories[key];
+			return (
+				<option key={category._id} value={category._id}>
+					{category.name}
+				</option>
+			);
+		});
 		return(
 			<div>
 				<li
@@ -75,6 +92,10 @@ class Product extends React.Component {
 
 					<input type="text" value={this.state.name} name={'name'} onChange={this.updateName} />
 					<input type="text" value={this.state.price} name={'price'} onChange={this.updatePrice} />
+
+					<select onChange={this.updateCategory}>
+						{mappedCategories}
+					</select>
 
 					<button
 						className={'btn btn-primary'}
@@ -102,7 +123,7 @@ class Product extends React.Component {
 					// type="button"
 					onClick={this.toggleEditing}
 				>
-					{this.state.name} - <Currency quantity={this.state.price} currency={"EUR"} />
+					{this.state.name} - <Currency quantity={this.state.price} currency={"EUR"} /> - {this.state.currentCategory}
 				</li>
 			</div>
 		);

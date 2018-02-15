@@ -25,7 +25,6 @@ class Menu extends React.Component {
 
 			let style = "menuButton btn btn-primary";
 			if (category) {
-				console.log(category.style);
 				style = category.style;
 			}
 

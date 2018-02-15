@@ -45,7 +45,7 @@ class Resto extends React.Component {
 		this.setState({
 			order: newOrder,
 			totalprice: newtotalprice,
-		});
+		}, this.calculateChange);
 	}
 
 	removeProduct(id) {
@@ -62,20 +62,23 @@ class Resto extends React.Component {
 		this.setState({
 			order: newOrder,
 			totalprice: newtotalprice,
-		});
+		}, this.calculateChange);
 	}
 
 	updateChange(event) {
 		let cashin= 0;
-		if (event.target.value !== "") {
+		if (event.target.value !== "" || event.target.value !== null) {
 			cashin = parseFloat(event.target.value);
 		}
 
 		this.setState({
 			cashin: cashin,
-		});
+		}, this.calculateChange);
 
-		let diff = cashin - this.state.totalprice;
+	}
+
+	calculateChange() {
+		let diff = this.state.cashin - this.state.totalprice;
 		this.setState({
 			change: diff,
 		});
@@ -208,7 +211,7 @@ class Resto extends React.Component {
 							className={'btn btn-secondary'}
 							onClick={this.clear}
 						>
-							Clear
+							Wissen
 						</button>
 						</div>
 					</div>
