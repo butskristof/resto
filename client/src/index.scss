@@ -1,0 +1,80 @@
+@font-face {
+	font-family: VAG;
+	src: url("/VAGRoundedBold.ttf");
+}
+
+$prim-rood: #ED2920;
+$prim-groen: #8BC53F;
+$prim-blauw: #00ADEE;
+
+$sec-geel: #FFF100;
+$sec-oranje: #F7921E;
+$sec-roos: #EB008B;
+$sec-paars: #652D90;
+$sec-blauw: #1B75BB;
+$sec-lichtgroen: #D6DE23;
+$sec-groen: #37B34A;
+$sec-donkergroen: #006838;
+$sec-grijs: #A6A8AC;
+$sec-bruin: #C3996B;
+
+body{
+	background: $prim-blauw;
+
+	header{
+		padding-top: 10px;
+		padding-bottom: 20px;
+		h1{
+				font-family: VAG;
+				width: 100%;
+				margin: auto;
+				text-align: center;
+				color: white;
+		}
+	}
+
+	#root {
+		background: white;
+		padding: 10px;
+		border-radius: 5px;
+		main{
+			.row{
+				.col-sm{
+					h2{
+						text-align: center;
+						font-family: VAG;
+						color: $prim-groen;
+					}
+				}
+				.col-sm:nth-of-type(1){
+					button{
+						width: 100%;
+						margin-bottom: 10px;
+						padding: 30px;
+						font-weight: bold;
+					}
+				}
+				.col-sm:nth-of-type(2){
+					table{
+						width: 100%;
+						border: 1px solid $sec-grijs;
+						font-family: monospace;
+						font-size: 15px;
+						text-align: center;
+						thead{
+							font-weight: bold;
+							border-bottom: 2px dashed black;
+						}
+						tr{
+							td{
+								button{
+									height: 50%;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
