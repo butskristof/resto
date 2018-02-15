@@ -10,6 +10,8 @@ class Edit extends React.Component {
 			products: {},
 			categories: {}
 		};
+
+		this.getData = this.getData.bind(this);
 	}
 
 	componentDidMount() {
@@ -53,6 +55,7 @@ class Edit extends React.Component {
 					price={product.price}
 					id={key}
 					key={key}
+					callback={this.getData}
 					// onClick={() => this.props.addToOrder(key)}
 				/>
 			);
@@ -66,7 +69,7 @@ class Edit extends React.Component {
 					{mappedProducts}
 				</ul>
 
-				<Add test={this.getData} categories={this.state.categories} />
+				<Add callback={this.getData} categories={this.state.categories} />
 			</div>
 		);
 	}

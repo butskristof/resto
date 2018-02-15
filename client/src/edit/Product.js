@@ -47,7 +47,8 @@ class Product extends React.Component {
 			.delete('/api/products/' + this.state.id)
 			.then((result) => {
 				console.log(result);
-			});
+			})
+			.then(this.props.callback);
 		this.toggleEditing();
 	}
 
