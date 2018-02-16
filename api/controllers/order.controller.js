@@ -5,7 +5,7 @@ module.exports.ordersGetAll = function (req, res) {
 	// set default offset and count
 	var offset = 0;
 	var count = 10;
-	var maxcount = 50;
+	var maxcount = 1000;
 
 
 	if (req.query && req.query.offset) {
