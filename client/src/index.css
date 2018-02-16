@@ -17,61 +17,165 @@ body {
     background: white;
     padding: 10px;
     border-radius: 5px; }
-    body #root main .row .col-sm h2 {
-      text-align: center;
-      font-family: VAG;
-      color: #8BC53F; }
-    body #root main .row .col-sm:nth-of-type(1) button {
-      width: 100%;
-      margin-bottom: 10px;
-      padding: 30px;
-      font-weight: bold; }
-    body #root main .row .col-sm:nth-of-type(2) table {
-      width: 100%;
-      border: 2px solid black;
-      font-family: monospace;
-      font-size: 15px;
-      text-align: center; }
-      body #root main .row .col-sm:nth-of-type(2) table thead {
-        font-weight: bold;
-        border-bottom: 2px dashed black; }
-      body #root main .row .col-sm:nth-of-type(2) table tr {
-        height: 60px; }
-        body #root main .row .col-sm:nth-of-type(2) table tr:nth-of-type(1) {
-          height: 30px; }
-        body #root main .row .col-sm:nth-of-type(2) table tr td .number {
-          width: 50%;
-          float: left;
-          padding-top: 10px; }
-        body #root main .row .col-sm:nth-of-type(2) table tr td .add {
-          width: 50%;
-          float: right; }
-          body #root main .row .col-sm:nth-of-type(2) table tr td .add button {
-            height: 20px;
+    body #root main {
+      height: 80vh;
+      display: block;
+      position: relative; }
+      body #root main .row {
+        position: relative;
+        overflow: hidden; }
+        body #root main .row .col-sm h2 {
+          text-align: center;
+          font-family: VAG;
+          color: #8BC53F; }
+        body #root main .row .col-sm::-webkit-scrollbar {
+          width: 5px; }
+        body #root main .row .col-sm::-webkit-scrollbar-track {
+          background: whitesmoke; }
+        body #root main .row .col-sm::-webkit-scrollbar-thumb {
+          background-color: #A6A8AC; }
+        body #root main .row .col-sm:nth-of-type(1) {
+          height: 80vh;
+          overflow: auto; }
+          body #root main .row .col-sm:nth-of-type(1) button {
             width: 100%;
-            margin-bottom: 0px;
-            line-height: 10px;
-            border-radius: 0px; }
-            body #root main .row .col-sm:nth-of-type(2) table tr td .add button:nth-of-type(1) {
-              background: #8BC53F;
-              border: 1px #8BC53F; }
-            body #root main .row .col-sm:nth-of-type(2) table tr td .add button:nth-of-type(2) {
-              background: #ED2920;
-              border: 1px #ED2920; }
-    body #root main .row .col-sm:nth-of-type(2) .discount {
-      width: 100%; }
-      body #root main .row .col-sm:nth-of-type(2) .discount div {
-        width: 100%; }
-        body #root main .row .col-sm:nth-of-type(2) .discount div .korting {
-          width: 33%;
-          float: left;
-          text-align: center; }
-          body #root main .row .col-sm:nth-of-type(2) .discount div .korting input {
-            margin-right: 5px;
-            cursor: pointer; }
-          body #root main .row .col-sm:nth-of-type(2) .discount div .korting label {
-            cursor: pointer; }
-    body #root main .row .col-sm:nth-of-type(2) .afrekening {
-      position: relative;
-      bottom: 0px;
-      right: 0px; }
+            margin-bottom: 10px;
+            padding: 30px;
+            font-weight: bold;
+            border: none; }
+          body #root main .row .col-sm:nth-of-type(1) .btn-primary {
+            background: #00ADEE; }
+            body #root main .row .col-sm:nth-of-type(1) .btn-primary:hover {
+              background: #0088bb; }
+          body #root main .row .col-sm:nth-of-type(1) .btn-success {
+            background: #8BC53F; }
+            body #root main .row .col-sm:nth-of-type(1) .btn-success:hover {
+              background: #70a130; }
+          body #root main .row .col-sm:nth-of-type(1) .btn-secondary {
+            background: #A6A8AC; }
+            body #root main .row .col-sm:nth-of-type(1) .btn-secondary:hover {
+              background: #8c8e93; }
+          body #root main .row .col-sm:nth-of-type(1) .btn-danger {
+            background: #ED2920; }
+            body #root main .row .col-sm:nth-of-type(1) .btn-danger:hover {
+              background: #ca1810; }
+          body #root main .row .col-sm:nth-of-type(1) .btn-info {
+            background: #37B34A; }
+            body #root main .row .col-sm:nth-of-type(1) .btn-info:hover {
+              background: #2b8c3a; }
+          body #root main .row .col-sm:nth-of-type(1) .btn-light {
+            border: 2px solid grey; }
+          body #root main .row .col-sm:nth-of-type(1) .btn-link {
+            border: 2px solid #1B75BB; }
+        body #root main .row .col-sm:nth-of-type(2) {
+          display: block;
+          height: 80vh; }
+          body #root main .row .col-sm:nth-of-type(2) .order::-webkit-scrollbar {
+            width: 5px; }
+          body #root main .row .col-sm:nth-of-type(2) .order::-webkit-scrollbar-track {
+            background: whitesmoke; }
+          body #root main .row .col-sm:nth-of-type(2) .order::-webkit-scrollbar-thumb {
+            background-color: #A6A8AC; }
+          body #root main .row .col-sm:nth-of-type(2) .order {
+            height: 50vh;
+            overflow: auto; }
+            body #root main .row .col-sm:nth-of-type(2) .order table {
+              width: 99%;
+              border: 2px solid black;
+              font-family: monospace;
+              font-size: 15px;
+              text-align: center; }
+              body #root main .row .col-sm:nth-of-type(2) .order table thead {
+                font-weight: bold;
+                border-bottom: 2px dashed black; }
+              body #root main .row .col-sm:nth-of-type(2) .order table tr {
+                height: 60px; }
+                body #root main .row .col-sm:nth-of-type(2) .order table tr:nth-of-type(1) {
+                  height: 30px; }
+                body #root main .row .col-sm:nth-of-type(2) .order table tr td .number {
+                  width: 50%;
+                  float: left;
+                  padding-top: 10px; }
+                body #root main .row .col-sm:nth-of-type(2) .order table tr td .add {
+                  width: 50%;
+                  float: right; }
+                  body #root main .row .col-sm:nth-of-type(2) .order table tr td .add button {
+                    height: 20px;
+                    width: 100%;
+                    margin-bottom: 0px;
+                    line-height: 10px;
+                    border-radius: 0px; }
+                    body #root main .row .col-sm:nth-of-type(2) .order table tr td .add button:nth-of-type(1) {
+                      background: #8BC53F;
+                      border: 1px #8BC53F; }
+                    body #root main .row .col-sm:nth-of-type(2) .order table tr td .add button:nth-of-type(2) {
+                      background: #ED2920;
+                      border: 1px #ED2920; }
+          body #root main .row .col-sm:nth-of-type(2) .discount {
+            width: 100%; }
+            body #root main .row .col-sm:nth-of-type(2) .discount div {
+              width: 100%; }
+              body #root main .row .col-sm:nth-of-type(2) .discount div .korting {
+                width: 33%;
+                float: left;
+                text-align: center; }
+                body #root main .row .col-sm:nth-of-type(2) .discount div .korting input {
+                  margin-right: 5px;
+                  cursor: pointer; }
+                body #root main .row .col-sm:nth-of-type(2) .discount div .korting label {
+                  cursor: pointer; }
+          body #root main .row .col-sm:nth-of-type(2) .afrekening {
+            display: block;
+            position: absolute;
+            bottom: 10px;
+            width: 100%; }
+            body #root main .row .col-sm:nth-of-type(2) .afrekening p {
+              padding-right: 70px;
+              padding-left: 40px;
+              width: 100%; }
+              body #root main .row .col-sm:nth-of-type(2) .afrekening p:nth-of-type(odd) {
+                overflow: auto; }
+                body #root main .row .col-sm:nth-of-type(2) .afrekening p:nth-of-type(odd) strong {
+                  float: left; }
+                body #root main .row .col-sm:nth-of-type(2) .afrekening p:nth-of-type(odd) span {
+                  background: #8BC53F;
+                  padding: 10px;
+                  border-radius: 5px;
+                  color: white;
+                  font-weight: bold;
+                  float: right; }
+              body #root main .row .col-sm:nth-of-type(2) .afrekening p:nth-of-type(2) {
+                overflow: auto; }
+                body #root main .row .col-sm:nth-of-type(2) .afrekening p:nth-of-type(2) strong {
+                  float: left; }
+                body #root main .row .col-sm:nth-of-type(2) .afrekening p:nth-of-type(2) input {
+                  float: right;
+                  width: 100px;
+                  border: 2px solid #00ADEE;
+                  padding: 5px;
+                  border-radius: 5px; }
+              body #root main .row .col-sm:nth-of-type(2) .afrekening p:nth-of-type(3) span {
+                background: #F7921E; }
+            body #root main .row .col-sm:nth-of-type(2) .afrekening button {
+              padding: 20px;
+              margin-left: 10px;
+              float: right;
+              font-weight: bold;
+              border: 0px;
+              margin-top: 20px; }
+              body #root main .row .col-sm:nth-of-type(2) .afrekening button:nth-of-type(1) {
+                margin-right: 70px;
+                background: #ED2920; }
+                body #root main .row .col-sm:nth-of-type(2) .afrekening button:nth-of-type(1):hover {
+                  background: #ca1810; }
+              body #root main .row .col-sm:nth-of-type(2) .afrekening button:nth-of-type(2) {
+                background: #8BC53F; }
+                body #root main .row .col-sm:nth-of-type(2) .afrekening button:nth-of-type(2):hover {
+                  background: #70a130; }
+  body footer {
+    position: fixed;
+    width: 100%;
+    text-align: center;
+    bottom: 10px;
+    left: 0px;
+    color: white; }

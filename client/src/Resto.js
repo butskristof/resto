@@ -202,29 +202,29 @@ class Resto extends React.Component {
 
 						<div className={'afrekening'}>
 						<p><strong>Totaal te ontvangen:</strong>
-							<Currency
+							<span><Currency
 								quantity={this.state.totalprice}
 								currency="EUR"
-							/>
+							/></span>
 						</p>
 
-						<p>Cash gekregen:
+						<p><strong>Cash gekregen:</strong>
 							<input type="text" onChange={this.updateChange} value={this.state.cashin} />
 						</p>
-						<p><strong>Terug te geven: </strong> {change}</p>
-
-						<button
-							className={'btn btn-primary'}
-							onClick={this.onSubmit}
-						>
-							Bestellen
-						</button>
+						<p><strong>Terug te geven: </strong> <span>{change}</span></p>
 						<button
 							className={'btn btn-secondary'}
 							onClick={this.clear}
 						>
 							Wissen
 						</button>
+						<button
+							className={'btn btn-primary'}
+							onClick={this.onSubmit}
+						>
+							Bestellen
+						</button>
+
 						</div>
 					</div>
 				</div>

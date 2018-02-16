@@ -38,7 +38,12 @@ body{
 		padding: 10px;
 		border-radius: 5px;
 		main{
+			height: 80vh;
+			display: block;
+			position: relative;
 			.row{
+				position: relative;
+				overflow: hidden;
 				.col-sm{
 					h2{
 						text-align: center;
@@ -46,58 +51,125 @@ body{
 						color: $prim-groen;
 					}
 				}
+				.col-sm::-webkit-scrollbar{
+					width: 5px;
+				}
+				.col-sm::-webkit-scrollbar-track {
+				    background: whitesmoke;
+				}
+				.col-sm::-webkit-scrollbar-thumb {
+				  background-color: $sec-grijs;
+				}
+
 				.col-sm:nth-of-type(1){
+					height: 80vh;
+					overflow: auto;
 					button{
 						width: 100%;
 						margin-bottom: 10px;
 						padding: 30px;
 						font-weight: bold;
+						border: none;
 					}
-				}
-				.col-sm:nth-of-type(2){
-					table{
-						width: 100%;
-						border: 2px solid black;
-						font-family: monospace;
-						font-size: 15px;
-						text-align: center;
-						thead{
-							font-weight: bold;
-							border-bottom: 2px dashed black;
+					.btn-primary{
+						background: $prim-blauw;
+						&:hover{
+							background: darken($prim-blauw, 10%);
 						}
-						tr{
-							height: 60px;
-							&:nth-of-type(1){
-								height: 30px;
+					}
+					.btn-success{
+						background: $prim-groen;
+						&:hover{
+							background: darken($prim-groen, 10%);
+						}
+					}
+					.btn-secondary{
+						background: $sec-grijs;
+						&:hover{
+							background: darken($sec-grijs, 10%);
+						}
+					}
+					.btn-danger{
+						background: $prim-rood;
+						&:hover{
+							background: darken($prim-rood, 10%);
+						}
+				}
+				.btn-info{
+					background: $sec-groen;
+					&:hover{
+						background: darken($sec-groen, 10%);
+					}
+			}
+			.btn-light{
+				border: 2px solid grey;
+		}
+		.btn-link{
+			border: 2px solid $sec-blauw;
+	}
+		}
+				.col-sm:nth-of-type(2){
+					display: block;
+					height: 80vh;
+
+					.order::-webkit-scrollbar{
+						width: 5px;
+					}
+					.order::-webkit-scrollbar-track {
+					    background: whitesmoke;
+					}
+					.order::-webkit-scrollbar-thumb {
+					  background-color: $sec-grijs;
+					}
+
+					.order{
+						height: 50vh;
+						overflow: auto;
+						table{
+							width: 99%;
+							border: 2px solid black;
+							font-family: monospace;
+							font-size: 15px;
+							text-align: center;
+							thead{
+								font-weight: bold;
+								border-bottom: 2px dashed black;
 							}
-							td{
-								.number{
-									width: 50%;
-									float: left;
-									padding-top: 10px;
+							tr{
+								height: 60px;
+								&:nth-of-type(1){
+									height: 30px;
 								}
-								.add{
-									width: 50%;
-									float: right;
-									button{
-										height: 20px;
-										width: 100%;
-										margin-bottom: 0px;
-										line-height: 10px;
-										border-radius: 0px;
-										&:nth-of-type(1){
-											background: $prim-groen;
-											border: 1px $prim-groen;
-										}
-										&:nth-of-type(2){
-											background: $prim-rood;
-											border: 1px $prim-rood;
+								td{
+									.number{
+										width: 50%;
+										float: left;
+										padding-top: 10px;
+									}
+									.add{
+										width: 50%;
+										float: right;
+										button{
+											height: 20px;
+											width: 100%;
+											margin-bottom: 0px;
+											line-height: 10px;
+											border-radius: 0px;
+											&:nth-of-type(1){
+												background: $prim-groen;
+												border: 1px $prim-groen;
+											}
+											&:nth-of-type(2){
+												background: $prim-rood;
+												border: 1px $prim-rood;
+											}
 										}
 									}
 								}
 							}
 						}
 					}
+
 					.discount{
 						width: 100%;
 						div{
@@ -117,12 +189,82 @@ body{
 						}
 					}
 					.afrekening{
-						position: relative;
-						bottom: 0px;
-						right: 0px;
+						display: block;
+						position: absolute;
+						bottom: 10px;
+						width: 100%;
+						p{
+							padding-right: 70px;
+							padding-left: 40px;
+							width: 100%;
+							&:nth-of-type(odd){
+								strong{
+									float:left;
+								}
+								span{
+									background: $prim-groen;
+									padding: 10px;
+									border-radius: 5px;
+									color: white;
+									font-weight: bold;
+									float: right;
+								}
+								overflow: auto;
+							}
+							&:nth-of-type(2){
+								strong{
+									float: left;
+								}
+								input{
+									float: right;
+									width: 100px;
+									border: 2px solid $prim-blauw;
+									padding: 5px;
+									border-radius: 5px;
+								}
+								overflow: auto;
+							}
+							&:nth-of-type(3){
+								span{
+									background: $sec-oranje;
+								}
+							}
+						}
+						button{
+							padding: 20px;
+							margin-left: 10px;
+							float: right;
+							font-weight: bold;
+							border: 0px;
+							margin-top: 20px;
+							&:nth-of-type(1){
+								margin-right: 70px;
+								background: $prim-rood;
+								&:hover{
+									background: darken($prim-rood, 10%);
+								}
+							}
+							&:nth-of-type(2){
+								background: $prim-groen;
+								&:hover{
+									background: darken($prim-groen, 10%);
+								}
+							}
+
+						}
 					}
 				}
 			}
 		}
 	}
+
+	footer{
+		position: fixed;
+		width: 100%;
+		text-align: center;
+		bottom: 10px;
+		left: 0px;
+		color: white;
+	}
+
 }
