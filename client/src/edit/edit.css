@@ -1,0 +1,31 @@
+.table table {
+	width: 100%;
+}
+
+.edit th.update, .edit th.delete {
+	width: 10%;
+}
+
+.edit th.name {
+	width: 40%;
+}
+
+.edit th.price, .edit th.color {
+	width: 20%;
+}
+
+.edit select {
+	width: 100%;
+}
+
+.edit input {
+	width: 100%;
+}
+
+.edit button {
+	width: 100%;
+}
+
+.edit {
+	padding: 10px;
+}

@@ -94,32 +94,36 @@ class Product extends React.Component {
 
 
 		return(
-			<div>
-				<li
-					className={'list-group-item'}
-				>
+				<tr>
 
-					<input type="text" value={this.state.name} name={'name'} onChange={this.updateName} />
-					<input type="text" value={this.state.price} name={'price'} onChange={this.updatePrice} />
-
-					<select onChange={this.updateCategory} defaultValue={this.state.currentCategory} >
-						{mappedCategories}
-					</select>
-
-					<button
-						className={'btn btn-primary'}
-						onClick={this.onUpdate}
-					>
-						Update
-					</button>
-					<button
-						className={'btn btn-danger'}
-						onClick={this.onDelete}
-					>
-						Delete
-					</button>
-				</li>
-			</div>
+					<td>
+						<input type="text" value={this.state.name} name={'name'} onChange={this.updateName} />
+					</td>
+					<td>
+						<input type="text" value={this.state.price} name={'price'} onChange={this.updatePrice} />
+					</td>
+					<td>
+						<select onChange={this.updateCategory} defaultValue={this.state.currentCategory} >
+							{mappedCategories}
+						</select>
+					</td>
+					<td>
+						<button
+							className={'btn btn-primary'}
+							onClick={this.onUpdate}
+						>
+							Update
+						</button>
+					</td>
+					<td>
+						<button
+							className={'btn btn-danger'}
+							onClick={this.onDelete}
+						>
+							Delete
+						</button>
+					</td>
+				</tr>
 		);
 	}
 
@@ -130,16 +134,15 @@ class Product extends React.Component {
 		}
 
 		return(
-			<div>
-				<li
-					className={'list-group-item'}
-					// className={'menuButton btn btn-primary'}
-					// type="button"
+				<tr
 					onClick={this.toggleEditing}
 				>
-					{this.state.name} - <Currency quantity={this.state.price} currency={"EUR"} /> - {categoryname}
-				</li>
-			</div>
+					<td>{this.state.name}</td>
+					<td><Currency quantity={this.state.price} currency={"EUR"} /></td>
+					<td>{categoryname}</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
 		);
 	}
 

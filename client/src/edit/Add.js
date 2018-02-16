@@ -90,9 +90,11 @@ class Add extends React.Component{
 						<input type="text" className={'form-control'} id={'price'} value={this.state.price} name={'price'} onChange={this.updatePrice} />
 					</div>
 
-					<select onChange={this.updateCategory}>
-						{mappedCategories}
-					</select>
+					<div className={'form-group'}>
+						<select onChange={this.updateCategory}>
+							{mappedCategories}
+						</select>
+					</div>
 
 					<button
 						className={'btn btn-primary'}

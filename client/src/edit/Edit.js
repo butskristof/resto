@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import Product from "./Product";
 import Add from './Add';
+import './edit.css';
 
 class Edit extends React.Component {
 	constructor() {
@@ -64,12 +65,27 @@ class Edit extends React.Component {
 		});
 
 		return(
-			<div>
+			<div className={'table table-striped edit'}>
 				<h2>Bewerken</h2>
 
-				<ul className={'list-group'}>
-					{mappedProducts}
-				</ul>
+				<table>
+					<thead>
+						<tr>
+							<th className={'name'}>Naam</th>
+							<th className={'price'}>Prijs</th>
+							<th className={'colour'}>Kleur</th>
+							<th className={'update'}>Bijwerken</th>
+							<th className={'delete'}>Verwijderen</th>
+						</tr>
+					</thead>
+					<tbody>
+						{mappedProducts}
+					</tbody>
+				</table>
+
+				{/*<ul className={'list-group'}>*/}
+					{/*{mappedProducts}*/}
+				{/*</ul>*/}
 
 				<Add callback={this.getData} categories={this.state.categories} />
 			</div>

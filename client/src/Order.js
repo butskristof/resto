@@ -19,6 +19,7 @@ class Order extends React.Component {
 			totalprice: nextProps.totalprice,
 		});
 	}
+
 	render() {
 
 		let mappedOrderlines = Object.keys(this.state.order).map((key) => {

@@ -173,7 +173,6 @@ body {
                 body #root main .row .col-sm:nth-of-type(2) .afrekening button:nth-of-type(2):hover {
                   background: #70a130; }
   body footer {
-    position: fixed;
     width: 100%;
     text-align: center;
     bottom: 10px;
