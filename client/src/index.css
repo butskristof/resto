@@ -139,7 +139,7 @@ body {
                   float: left; }
                 body #root main .row .col-sm:nth-of-type(2) .afrekening p:nth-of-type(odd) span {
                   background: #8BC53F;
-                  padding: 10px;
+                  padding: 5px;
                   border-radius: 5px;
                   color: white;
                   font-weight: bold;
