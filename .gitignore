@@ -19,6 +19,7 @@
 *.swp
 **/.idea/*
 *.iml
+prepros-6.config
 
 npm-debug.log*
 yarn-debug.log*

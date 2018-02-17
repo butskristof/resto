@@ -9,7 +9,6 @@ class Add extends React.Component{
 			name: "",
 			price: 0,
 			categories: this.props.categories,
-			currentCategory: this.props.category
 		};
 
 		this.updateName = this.updateName.bind(this);
@@ -20,9 +19,16 @@ class Add extends React.Component{
 	}
 
 	componentWillReceiveProps(nextProps) {
+
+		let newcat = nextProps.categories[Object.keys(nextProps.categories)[0]];
+		let newcatid = "";
+		if (newcat) {
+			newcatid = newcat._id;
+		}
+
 		this.setState({
 			categories: nextProps.categories,
-			currentCategory: nextProps.category,
+			currentCategory: newcatid,
 		});
 	}
 

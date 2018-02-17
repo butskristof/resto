@@ -32,7 +32,7 @@ var api = require('./api/routes');
 app.use('/api', api);
 
 // routes for web access
-// app.use(express.static(path.join(__dirname, 'client/build')));
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
