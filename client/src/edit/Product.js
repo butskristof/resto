@@ -30,12 +30,6 @@ class Product extends React.Component {
 		});
 	}
 
-	// componentWillReceiveProps(nextProps) {
-	// 	this.setState({
-	// 		categories: nextProps.categories,
-	// 	});
-	// }
-
 	onUpdate() {
 		let price = parseFloat(this.state.price);
 
@@ -43,7 +37,6 @@ class Product extends React.Component {
 			axios
 				.put('/api/products/' + this.state.id, {name: this.state.name, price: price, category: this.state.currentCategory})
 				.then((result) => {
-					// console.log(result);
 				});
 			this.toggleEditing();
 		}

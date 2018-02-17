@@ -7,8 +7,6 @@ import Stats from './stats/Stats';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import registerServiceWorker from './registerServiceWorker';
 
-// ReactDOM.render(<Resto />, document.getElementById('root'));
-// ReactDOM.render(<Edit />, document.getElementById('root'));
 ReactDOM.render( (
 	<Router>
 		<Switch>

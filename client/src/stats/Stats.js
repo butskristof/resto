@@ -51,31 +51,20 @@ class Stats extends React.Component {
 
 		axios.get('/api/orders?count=1000')
 			.then((response) => {
-				// console.log(response.data);
-				// let categories = {};
-				// for (let i = 0; i < response.data.length; ++i) {
-				// 	categories[response.data[i]._id] = response.data[i];
-				// }
-				// console.log(categories)
-				//
-				// console.log(response.data);
 				this.setState({
 					orders: response.data,
 				}, this.calculateProductTotals);
 			});
-
-		// this.calculateProductTotals();
 	}
 
 	render() {
 
-		// let orders = Object.keys(this.state.orders).map((key) => {
-		// 	return(
-		// 		<Order key={key} products={this.state.products} order={this.state.orders[key]} />
-		// 	);
-		// });
+		let orders = Object.keys(this.state.orders).map((key) => {
+			return(
+				<Order key={key} products={this.state.products} order={this.state.orders[key]} />
+			);
+		});
 
-		// let products = "";
 		let products = Object.keys(this.state.products).map((key) => {
 			return(
 				<li key={key}>
@@ -84,12 +73,10 @@ class Stats extends React.Component {
 			);
 		});
 
-		// this.calculateProductTotals();
-
 		return(
 			<div>
 				<h2>Statistieken</h2>
-				{/*{orders}*/}
+				{orders}
 				<ul>
 					{products}
 				</ul>

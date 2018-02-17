@@ -59,7 +59,6 @@ class Edit extends React.Component {
 					categories={this.state.categories}
 					category={product.category}
 					callback={this.getData}
-					// onClick={() => this.props.addToOrder(key)}
 				/>
 			);
 		});
@@ -82,10 +81,6 @@ class Edit extends React.Component {
 						{mappedProducts}
 					</tbody>
 				</table>
-
-				{/*<ul className={'list-group'}>*/}
-					{/*{mappedProducts}*/}
-				{/*</ul>*/}
 
 				<Add callback={this.getData} categories={this.state.categories} />
 			</div>

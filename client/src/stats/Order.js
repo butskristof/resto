@@ -6,7 +6,6 @@ class Order extends React.Component {
 
 		console.log(this.props.order);
 		let products = Object.keys(this.props.order.products).map((key) => {
-			// let productid = this.props.order[key].product;
 			let productid = this.props.order.products[key].product;
 			let productname = "";
 			if (this.props.products[productid]) {
