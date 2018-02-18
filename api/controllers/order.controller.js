@@ -4,7 +4,7 @@ var Order = mongoose.model('Order');
 module.exports.ordersGetAll = function (req, res) {
 	// set default offset and count
 	var offset = 0;
-	var count = 10;
+	var count = 100;
 	var maxcount = 1000;
 
 

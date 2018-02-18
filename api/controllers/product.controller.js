@@ -4,8 +4,8 @@ var Product = mongoose.model('Product');
 module.exports.productsGetAll = function (req, res) {
 	// set default offset and count
 	var offset = 0;
-	var count = 10;
-	var maxcount = 50;
+	var count = 100;
+	var maxcount = 100;
 
 	if (req.query && req.query.offset) {
 		offset = parseInt(req.query.offset, 10);
@@ -83,6 +83,7 @@ module.exports.productsAddOne = function (req, res) {
 			category: req.body.category
 		}, function (err, product) {
 			if (err) {
+				console.log(err);
 				res
 					.status(400)
 					.json(err);

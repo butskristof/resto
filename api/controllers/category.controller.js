@@ -4,7 +4,7 @@ var Category = mongoose.model('Category');
 module.exports.categoriesGetAll = function (req, res) {
 	// set default offset and count
 	var offset = 0;
-	var count = 10;
+	var count = 50;
 	var maxcount = 50;
 
 	if (req.query && req.query.offset) {
