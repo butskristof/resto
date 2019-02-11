@@ -104,7 +104,7 @@ function createTicket(order) {
 	ticket.push("Restaurandag 2019");
 	ticket.push("=================================")
 	order.body.orderlines.forEach(ol => {
-		ticket.push(`${ol.quantity}x\t\t${ol.name}`);
+		ticket.push(`${ol.quantity}x\t\t${ol.fullname}`);
 	});
 	let total;
 	if (order.body.leiding || order.body.helper) {

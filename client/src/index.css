@@ -40,9 +40,12 @@ body {
           body #root main .row .col-sm:nth-of-type(1) button {
             width: 100%;
             margin-bottom: 10px;
-            padding: 30px;
+            padding: 20px;
             font-weight: bold;
             border: none; }
+          body #root main .row .col-sm:nth-of-type(1) .btn-topping {
+            width: auto;
+            padding: 10px; }
           body #root main .row .col-sm:nth-of-type(1) .btn-primary {
             background: #00ADEE; }
             body #root main .row .col-sm:nth-of-type(1) .btn-primary:hover {

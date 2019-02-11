@@ -18,6 +18,12 @@ class Menu extends React.Component {
 		});
 	}
 
+	chooseToppings(product, chosenToppings) {
+		// console.log(`We'll choose a topping for ${product.name}`);
+
+		this.props.addToOrder(product, chosenToppings);
+	}
+
 	render() {
 		let mappedProducts = Object.keys(this.state.products).map((key) => {
 			let product = this.state.products[key];
@@ -31,11 +37,12 @@ class Menu extends React.Component {
 			return (
 				<Product
 					name={product.name}
+					toppings={product.toppings}
 					price={product.price}
 					id={key}
 					key={key}
 					styles={style}
-					onClick={() => this.props.addToOrder(key)}
+					chooseToppings={(toppings) => this.chooseToppings(product, toppings)}
 				/>
 			);
 		});

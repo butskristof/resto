@@ -12,7 +12,7 @@ class Resto extends React.Component {
 		super();
 		this.state = {
 			products: {},
-			order: {},
+			order: [],
 			totalprice: 0,
 			cashin: 0,
 			change: 0,
@@ -24,40 +24,69 @@ class Resto extends React.Component {
 		this.onSubmit = this.onSubmit.bind(this);
 		this.updateDiscount = this.updateDiscount.bind(this);
 		this.clear = this.clear.bind(this);
+		this.addProduct = this.addProduct.bind(this);
 	}
 
-	updateTotalPrice(id) {
-		if ( this.state.discount !== 'leiding' && this.state.discount !== 'helper' ) {
-		}
-	}
-
-	addProduct(id) {
-		// console.log("Add " + id);
+	addProduct(product, toppings) { // productId, [toppingId]
 		let newOrder = this.state.order;
-		if (newOrder[id] == null) {
-			newOrder[id] = 1;
+		let id = product._id;
+		let productname = product.name;
+		let productprice = product.price;
+
+		if (toppings == null || toppings.length === 0) {
+			console.log("addProduct: no toppings");
 		} else {
-			++newOrder[id];
+			toppings.forEach(topping => {
+				// console.log(topping.name);
+				productname += `, ${topping.name}`;
+				productprice += topping.price;
+				id += `-${topping._id}`;
+			});
 		}
 
-		let newtotalprice = this.state.totalprice + this.state.products[id].price;
+		let newTotalPrice = this.state.totalprice + productprice;
+
+		if (newOrder[id] == null) {
+			newOrder[id] = {
+				quantity: 1,
+				price: productprice,
+				name: productname
+			};
+		} else {
+			++(newOrder[id].quantity);
+		}
 
 		this.setState({
 			order: newOrder,
-			totalprice: newtotalprice,
+			totalprice: newTotalPrice,
 		}, this.calculateChange);
 	}
 
-	removeProduct(id) {
+	increaseQuantity(id) {
 		let newOrder = this.state.order;
+
 		if (newOrder[id] != null) {
-			--newOrder[id];
-			if (newOrder[id] === 0) {
+			++(newOrder[id].quantity);
+		}
+
+		let newTotalPrice = this.state.totalprice + this.state.order[id].price;
+
+		this.setState({
+			order: newOrder,
+			totalprice: newTotalPrice,
+		}, this.calculateChange);
+	}
+
+	decreaseQuantity(id) {
+		let newOrder = this.state.order;
+		let newtotalprice = this.state.totalprice - this.state.order[id].price;
+
+		if (newOrder[id] != null) {
+			--newOrder[id].quantity;
+			if (newOrder[id].quantity === 0) {
 				delete newOrder[id];
 			}
 		}
-
-		let newtotalprice = this.state.totalprice - this.state.products[id].price;
 
 		this.setState({
 			order: newOrder,
@@ -71,7 +100,6 @@ class Resto extends React.Component {
 		this.setState({
 			cashin: cashin,
 		}, this.calculateChange);
-
 	}
 
 	calculateChange() {
@@ -129,8 +157,15 @@ class Resto extends React.Component {
 		let orderlines = [];
 
 		for (let key in this.state.order) {
-			// console.log(key + " - " + this.state.order[key]);
-			orderlines.push({product: key, name: this.state.products[key].name , quantity: this.state.order[key]});
+			let splitKey = key.split("-");
+			let productKey = splitKey[0];
+			let toppingKeys;
+			if (splitKey.length > 1) {
+				toppingKeys = splitKey.slice(1);
+			} else {
+				toppingKeys = [];
+			}
+			orderlines.push({product: productKey, toppings: toppingKeys, quantity: this.state.order[key].quantity, fullname: this.state.order[key].name});
 		}
 
 		let totalprice = this.state.totalprice;
@@ -170,15 +205,15 @@ class Resto extends React.Component {
 						<Menu
 							products={this.state.products}
 							categories={this.state.categories}
-							addToOrder={(id) => this.addProduct(id)}
+							addToOrder={(productId, toppings) => this.addProduct(productId, toppings)}
 						/>
 					</div>
 					<div className={'col-sm'}>
 						<Order
 							order={this.state.order}
-							products={this.state.products}
-							add={(id) => this.addProduct(id)}
-							remove={(id) => this.removeProduct(id)}
+							// products={this.state.products}
+							add={(id) => this.increaseQuantity(id)}
+							remove={(id) => this.decreaseQuantity(id)}
 							/>
 
 						<div className={'discount'}>

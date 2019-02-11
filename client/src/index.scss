@@ -67,9 +67,13 @@ body{
 					button{
 						width: 100%;
 						margin-bottom: 10px;
-						padding: 30px;
+						padding: 20px;
 						font-weight: bold;
 						border: none;
+					}
+					.btn-topping {
+					  width: auto;
+					  padding: 10px;
 					}
 					.btn-primary{
 						background: $prim-blauw;

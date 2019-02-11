@@ -23,19 +23,19 @@ class Order extends React.Component {
 	render() {
 
 		let mappedOrderlines = Object.keys(this.state.order).map((key) => {
-			var product = this.state.products[key];
+			var orderline = this.state.order[key];
 			return (
 				<tr key={key}>
-					<td>{product.name}</td>
+					<td>{orderline.name}</td>
 					<td>
-					<div className={'number'}>{this.state.order[key]}</div>
+					<div className={'number'}>{orderline.quantity}</div>
 					<div className={'add'}>
-					<button
-						className={'btn btn-sm btn-primary'}
-						onClick={() => this.props.add(key)}
-					>
-						+
-					</button>
+						<button
+							className={'btn btn-sm btn-primary'}
+							onClick={() => this.props.add(key)}
+						>
+							+
+						</button>
 						<button
 							className={'btn btn-sm btn-primary'}
 							onClick={() => this.props.remove(key)}
@@ -44,8 +44,8 @@ class Order extends React.Component {
 						</button>
 					</div>
 					</td>
-					<td><Currency quantity={product.price} currency={"EUR"} /></td>
-					<td><Currency quantity={product.price * this.state.order[key]} currency={"EUR"} /></td>
+					<td><Currency quantity={orderline.price} currency={"EUR"} /></td>
+					<td><Currency quantity={orderline.price * orderline.quantity} currency={"EUR"} /></td>
 				</tr>
 			);
 		});
