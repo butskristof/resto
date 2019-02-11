@@ -1,6 +1,5 @@
 var mongoose = require('mongoose');
 var Order = mongoose.model('Order');
-var Product = mongoose.model('Product');
 
 module.exports.ordersGetAll = function (req, res) {
 	// set default offset and count

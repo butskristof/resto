@@ -47,3 +47,4 @@ process.on('SIGTERM', function() {
 require('./product.model');
 require('./order.model');
 require('./category.model');
+require('./topping.model');

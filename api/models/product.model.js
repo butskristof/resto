@@ -1,12 +1,5 @@
 var mongoose = require('mongoose');
 
-// var categorySchema =  new mongoose.Schema({
-// 	name: {
-// 		type: String,
-// 		required: true
-// 	}
-// });
-
 var productSchema = new mongoose.Schema({
 	name: {
 		type: String,
@@ -15,6 +8,7 @@ var productSchema = new mongoose.Schema({
 	},
 	price: Number,
 	category: { type: mongoose.Schema.Types.ObjectId, ref: 'Category' },
+	toppings: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Topping' }],
 	created_at: {
 		type: Date,
 		"default": Date.now

@@ -4,6 +4,7 @@ var router = express.Router();
 var ctrlProduct = require('../controllers/product.controller');
 var ctrlOrder = require('../controllers/order.controller');
 var ctrlCategory = require('../controllers/category.controller');
+var ctrlTopping = require('../controllers/topping.controller');
 
 // product routes
 router
@@ -32,5 +33,11 @@ router
 	.get('/categories/:categoryid', ctrlCategory.categoriesGetOne)
 	.put('/categories/:categoryid', ctrlCategory.categoriesUpdateOne)
 	.delete('/categories/:categoryid', ctrlCategory.categoriesDeleteOne);
+
+// topping routes
+
+router
+	.get('/toppings/:productid', ctrlTopping.toppingsGetForProduct)
+	.post('/toppings', ctrlTopping.toppingsAddOne);
 
 module.exports = router;

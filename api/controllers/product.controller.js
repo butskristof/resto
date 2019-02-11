@@ -31,6 +31,7 @@ module.exports.productsGetAll = function (req, res) {
 	} else {
 		Product
 			.find()
+			.populate("toppings")
 			.skip(offset)
 			.limit(count)
 			.exec(function (err, products) {
@@ -51,6 +52,7 @@ module.exports.productsGetOne = function (req, res) {
 
 	Product
 		.findById(id)
+		.populate("toppings")
 		.exec(function(err, doc) {
 			// set default
 			var response = {
