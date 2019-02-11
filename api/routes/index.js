@@ -37,6 +37,7 @@ router
 // topping routes
 
 router
+	.get('/toppings', ctrlTopping.toppingsGetAll)
 	.get('/toppings/:productid', ctrlTopping.toppingsGetForProduct)
 	.post('/toppings', ctrlTopping.toppingsAddOne);
 

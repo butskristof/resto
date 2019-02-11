@@ -1,8 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 // import Product from "./Product";
-// import Add from './Add';
-import '../edit.css';
+import AddTopping from './AddTopping';
+import '../edit/edit.css';
+import Topping from "./Topping";
 
 class EditToppings extends React.Component {
 	constructor() {
@@ -47,17 +48,16 @@ class EditToppings extends React.Component {
 	}
 
 	render() {
-
-		let mappedProducts = Object.keys(this.state.products).map((key) => {
-			let product = this.state.products[key];
+		let mappedToppings = Object.keys(this.state.toppings).map((key) => {
+			let topping = this.state.toppings[key];
 			return (
-				<Product
-					name={product.name}
-					price={product.price}
+				<Topping
+					name={topping.name}
+					price={topping.price}
 					id={key}
 					key={key}
-					toppings={this.state.toppings}
-					category={product.category}
+					products={this.state.products}
+					product={topping.product}
 					callback={this.getData}
 				/>
 			);
@@ -72,17 +72,17 @@ class EditToppings extends React.Component {
 					<tr>
 						<th className={'name'}>Naam</th>
 						<th className={'price'}>Prijs</th>
-						<th className={'colour'}>Kleur</th>
+						<th className={'colour'}>Producten</th>
 						<th className={'update'}>Bijwerken</th>
 						<th className={'delete'}>Verwijderen</th>
 					</tr>
 					</thead>
 					<tbody>
-					{mappedProducts}
+					{mappedToppings}
 					</tbody>
 				</table>
 
-				{/*<Add callback={this.getData} categories={this.state.categories} />*/}
+				<AddTopping callback={this.getData} products={this.state.products} />
 			</div>
 		);
 	}

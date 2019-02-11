@@ -58,7 +58,7 @@ class Product extends React.Component {
 								   checked={this.state.checkboxValues[topping._id]}
 								   onClick={(ev) => this.toppingsChanged(topping._id)}
 							/>
-							{topping.name}
+							{topping.name} - <Currency quantity={topping.price} currency={"EUR"}/>
 						</label>
 					))}
 
@@ -71,7 +71,7 @@ class Product extends React.Component {
 
 			button = (
 				<button
-					className={"btn " + this.props.styles}
+					className={"btn btn-product " + this.props.styles}
 					type="button"
 				>
 					{this.state.name} - <Currency quantity={this.state.price} currency={"EUR"} />
@@ -80,7 +80,7 @@ class Product extends React.Component {
 		} else {
 			button = (
 				<button
-					className={"btn " + this.props.styles}
+					className={"btn btn-product " + this.props.styles}
 					type="button"
 					onClick={() => this.props.chooseToppings(null)}
 				>
