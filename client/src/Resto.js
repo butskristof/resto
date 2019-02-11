@@ -130,7 +130,7 @@ class Resto extends React.Component {
 
 		for (let key in this.state.order) {
 			// console.log(key + " - " + this.state.order[key]);
-			orderlines.push({product: key, quantity: this.state.order[key]});
+			orderlines.push({product: key, name: this.state.products[key].name , quantity: this.state.order[key]});
 		}
 
 		let totalprice = this.state.totalprice;

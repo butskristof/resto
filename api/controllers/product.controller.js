@@ -146,3 +146,6 @@ module.exports.productsDeleteOne = function (req, res) {
 		});
 };
 
+module.exports.productsGetName = function (req, res) {
+
+}

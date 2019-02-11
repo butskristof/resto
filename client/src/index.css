@@ -77,7 +77,7 @@ body {
           body #root main .row .col-sm:nth-of-type(2) .order::-webkit-scrollbar-thumb {
             background-color: #A6A8AC; }
           body #root main .row .col-sm:nth-of-type(2) .order {
-            height: 48vh;
+            height: 55%;
             overflow: auto; }
             body #root main .row .col-sm:nth-of-type(2) .order table {
               width: 99%;

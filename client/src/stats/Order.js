@@ -4,14 +4,14 @@ class Order extends React.Component {
 
 	render() {
 
-		console.log(this.props.order);
+		// console.log(this.props.order);
 		let products = Object.keys(this.props.order.products).map((key) => {
 			let productid = this.props.order.products[key].product;
 			let productname = "";
 			if (this.props.products[productid]) {
 				productname = this.props.products[productid].name;
 			}
-			console.log(productname);
+			// console.log(productname);
 
 			return (
 					<li key={productid}>{this.props.order.products[key].quantity} * {productname}</li>

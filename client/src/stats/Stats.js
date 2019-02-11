@@ -10,18 +10,25 @@ class Stats extends React.Component {
 		this.state = {
 			products: {},
 			orders: {},
+			totalincome: 0,
 		};
 	}
 
 	calculateProductTotals() {
 		let products = this.state.products;
 		let orders = this.state.orders;
+		let totalincome = 0;
+
 		for (let i = 0; i < orders.length; ++i) {
+			if (orders[i].leiding !== true && orders[i].helper !== true) {
+				totalincome = totalincome + orders[i].total_price;
+			}
 			for (let j = 0; j < orders[i].products.length; ++j) {
 				let productid = orders[i].products[j].product;
 				if (products[productid]) {
-					if (products[productid]["sold"] == null) {
 
+
+					if (products[productid]["sold"] == null) {
 						products[productid]["sold"] = orders[i].products[j].quantity;
 					} else {
 						products[productid]["sold"] = products[productid]["sold"] + orders[i].products[j].quantity;
@@ -30,8 +37,16 @@ class Stats extends React.Component {
 			}
 		}
 
+		for (let p in products) {
+			// console.log(products[p].price);
+			// totalincome = totalincome + (products[p].price * products[p].sold);
+		}
+
+		console.log(totalincome);
+
 		this.setState({
 			products: products,
+			totalincome: totalincome,
 		});
 	}
 

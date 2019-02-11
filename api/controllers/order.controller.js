@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var Order = mongoose.model('Order');
+var Product = mongoose.model('Product');
 
 module.exports.ordersGetAll = function (req, res) {
 	// set default offset and count
@@ -88,9 +89,32 @@ module.exports.ordersAddOne = function (req, res) {
 					.status(400)
 					.json(err);
 			} else {
+				createTicket(req);
 				res
 					.status(201)
 					.json(order);
 			}
 		});
 };
+
+function createTicket(order) {
+	// add exception for soup
+	let ticket = [];
+	// let soupTicket = [];
+	ticket.push("LOGO");
+	ticket.push("Restaurandag 2019");
+	ticket.push("=================================")
+	order.body.orderlines.forEach(ol => {
+		ticket.push(`${ol.quantity}x\t\t${ol.name}`);
+	});
+	let total;
+	if (order.body.leiding || order.body.helper) {
+		total = 0.0;
+	} else {
+		total = order.body.totalprice;
+	}
+	ticket.push("=================================")
+	ticket.push(`Totaal:\t\t${total.toFixed(2)} EUR`); // align total left
+
+	ticket.forEach(line => console.log(line));
+}
