@@ -103,12 +103,11 @@ const ticketOutro = [" ", " ", " ", " ", "© 2019 KLJ Wiekevorst"];
 
 function createTicket(order) {
 	// add exception for soup
-	let ticket = ticketIntro;
+	let ticket = ticketIntro.slice();
 	let containsSoup = false;
 	let soupticket = ticketIntro.slice();
 
 	order.body.orderlines.forEach(ol => {
-		console.log(ol.fullname);
 		if (ol.fullname.toLowerCase().includes("soep")) {
 			containsSoup = true;
 			soupticket.push(`${ol.quantity}x ${ol.fullname}`);
@@ -124,13 +123,13 @@ function createTicket(order) {
 		total = order.body.totalprice;
 	}
 
-	ticket.push(...ticketMiddle);
-	soupticket.push(...ticketMiddle);
+	ticket.push(...ticketMiddle.slice());
+	soupticket.push(...ticketMiddle.slice());
 
 	ticket.push(`Totaal: ${total.toFixed(2)} EUR`); // align total left
 
-	ticket.push(...ticketOutro);
-	soupticket.push(...ticketOutro);
+	ticket.push(...ticketOutro.slice());
+	soupticket.push(...ticketOutro.slice());
 
 	printing.printText(ticket);
 	if (containsSoup) {

@@ -37,17 +37,21 @@ module.exports.testPrinter = function () {
 module.exports.printText = function (text) {
 	text.forEach(line => thermal_printer.println(line));
 
+	let toPrint = thermal_printer.getBuffer();
+	thermal_printer.clear();
+
 	printer.printDirect({
-		data: thermal_printer.getBuffer(),
+		data: toPrint,
 		printer: epson.name,
 		type: "TEXT",
 		success: function (job_id) {
-			console.log(`Printing OK: ${job_id}`)
+			console.log(`Printing OK: ${job_id}`);
+			thermal_printer.clear();
 		},
 		error: function (err) {
 			console.log(err)
 		}
 	});
 
-	thermal_printer.clear();
+	// thermal_printer.clear();
 };
