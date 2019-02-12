@@ -13,16 +13,34 @@ class Product extends React.Component {
 			price: this.props.price,
 			id: this.props.id,
 			// toppings: this.props.toppings,
-			checkboxValues: checkboxValues
+			checkboxValues: checkboxValues,
+			clearCtr: this.props.clear
 		};
 		this.toppingsChanged=this.toppingsChanged.bind(this);
 		this.addToOrder=this.addToOrder.bind(this);
 	}
 
-	toppingsChanged(toppingId) {
+	componentDidUpdate(prevProps, prevState, snapshot) {
+		if (prevProps.clear !== this.props.clear) {
+			this.clear(this.props.clear);
+		}
+	}
+
+	clear = (clearCtr) => {
+		let newCheckBoxValues = this.state.checkboxValues;
+		Object.keys(newCheckBoxValues).map(key => {
+			newCheckBoxValues[key] = false;
+		});
+		this.setState({
+			clear: clearCtr,
+			checkboxValues: newCheckBoxValues
+		});
+	};
+
+	toppingsChanged(event, toppingId) {
 		// this.state.checkboxValues[toppingId] = !this.state.checkboxValues[toppingId];
 		let newValues = this.state.checkboxValues;
-		newValues[toppingId] = !newValues[toppingId];
+		newValues[toppingId] = event.target.checked;
 		this.setState({
 			checkboxValues: newValues
 		});
@@ -56,7 +74,7 @@ class Product extends React.Component {
 							<input type="checkbox"
 								   value={topping._id}
 								   checked={this.state.checkboxValues[topping._id]}
-								   onClick={(ev) => this.toppingsChanged(topping._id)}
+								   onClick={(ev) => this.toppingsChanged(ev, topping._id)}
 							/>
 							{topping.name} - <Currency quantity={topping.price} currency={"EUR"}/>
 						</label>

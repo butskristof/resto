@@ -97,20 +97,26 @@ module.exports.ordersAddOne = function (req, res) {
 		});
 };
 
+const ticketIntro = ["Tafel:", " ", " ", "============================", " ", "Bestelde gerechten:"];
+const ticketMiddle = [" ", "============================", " "];
+const ticketOutro = [" ", " ", " ", " ", "© 2019 KLJ Wiekevorst"];
+
 function createTicket(order) {
 	// add exception for soup
-	let ticket = [];
-	// let soupTicket = [];
-	ticket.push("Tafel:");
-	ticket.push(" ");
-	ticket.push(" ");
-	ticket.push("============================");
-	ticket.push(" ");
+	let ticket = ticketIntro;
+	let containsSoup = false;
+	let soupticket = ticketIntro.slice();
 
-	ticket.push("Bestelde gerechten:");
 	order.body.orderlines.forEach(ol => {
-		ticket.push(`${ol.quantity}x ${ol.fullname}`);
+		console.log(ol.fullname);
+		if (ol.fullname.toLowerCase().includes("soep")) {
+			containsSoup = true;
+			soupticket.push(`${ol.quantity}x ${ol.fullname}`);
+		} else {
+			ticket.push(`${ol.quantity}x ${ol.fullname}`);
+		}
 	});
+
 	let total;
 	if (order.body.leiding || order.body.helper) {
 		total = 0.0;
@@ -118,16 +124,18 @@ function createTicket(order) {
 		total = order.body.totalprice;
 	}
 
-	ticket.push(" ");
-	ticket.push("============================");
-	ticket.push(" ");
+	ticket.push(...ticketMiddle);
+	soupticket.push(...ticketMiddle);
 
 	ticket.push(`Totaal: ${total.toFixed(2)} EUR`); // align total left
-	ticket.push(" ");
-	ticket.push(" ");
+
+	ticket.push(...ticketOutro);
+	soupticket.push(...ticketOutro);
 
 	printing.printText(ticket);
+	if (containsSoup) {
+		printing.printText(soupticket);
+	}
 
-	ticket.forEach(line => console.log(line));
-
+	// ticket.forEach(line => console.log(line));
 }

@@ -36,9 +36,6 @@ module.exports.testPrinter = function () {
 
 module.exports.printText = function (text) {
 	text.forEach(line => thermal_printer.println(line));
-	thermal_printer.println(" ");
-	thermal_printer.println(" ");
-	thermal_printer.println("© 2019 KLJ Wiekevorst");
 
 	printer.printDirect({
 		data: thermal_printer.getBuffer(),

@@ -17,7 +17,8 @@ class Resto extends React.Component {
 			cashin: 0,
 			change: 0,
 			discount: "none",
-			categories: {}
+			categories: {},
+			clear: 0
 		};
 
 		this.updateChange = this.updateChange.bind(this);
@@ -27,6 +28,12 @@ class Resto extends React.Component {
 		this.addProduct = this.addProduct.bind(this);
 	}
 
+	clearrr = () => {
+		this.setState({
+			clear: this.state.clear + 1
+		});
+	};
+
 	addProduct(product, toppings) { // productId, [toppingId]
 		let newOrder = this.state.order;
 		let id = product._id;
@@ -34,7 +41,7 @@ class Resto extends React.Component {
 		let productprice = product.price;
 
 		if (toppings == null || toppings.length === 0) {
-			console.log("addProduct: no toppings");
+			// console.log("addProduct: no toppings");
 		} else {
 			toppings.forEach(topping => {
 				// console.log(topping.name);
@@ -151,6 +158,8 @@ class Resto extends React.Component {
 			change: 0,
 			discount: "none",
 		});
+
+		this.clearrr();
 	}
 
 	onSubmit(event) {
@@ -206,6 +215,7 @@ class Resto extends React.Component {
 							products={this.state.products}
 							categories={this.state.categories}
 							addToOrder={(productId, toppings) => this.addProduct(productId, toppings)}
+							clear={this.state.clear}
 						/>
 					</div>
 					<div className={'col-sm'}>

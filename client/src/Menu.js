@@ -8,14 +8,27 @@ class Menu extends React.Component {
 		this.state = {
 			products: this.props.products,
 			categories: this.props.categories,
+			clear: this.props.clear
 		};
 	}
+
+	clear = (clearCtr) => {
+		this.setState({
+			clear: clearCtr
+		});
+	};
 
 	componentWillReceiveProps(nextProps) {
 		this.setState({
 			products: nextProps.products,
 			categories: nextProps.categories,
 		});
+	}
+
+	componentDidUpdate(prevProps, prevState, snapshot) {
+		if (prevProps.clear !== this.props.clear) {
+			this.clear(this.props.clear);
+		}
 	}
 
 	chooseToppings(product, chosenToppings) {
@@ -34,8 +47,6 @@ class Menu extends React.Component {
 				style = category.style;
 			}
 
-			console.log(product.toppings);
-
 			return (
 				<Product
 					name={product.name}
@@ -45,6 +56,7 @@ class Menu extends React.Component {
 					key={key}
 					styles={style}
 					chooseToppings={(toppings) => this.chooseToppings(product, toppings)}
+					clear={this.state.clear}
 				/>
 			);
 		});
