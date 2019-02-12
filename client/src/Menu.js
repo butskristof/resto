@@ -34,6 +34,8 @@ class Menu extends React.Component {
 				style = category.style;
 			}
 
+			console.log(product.toppings);
+
 			return (
 				<Product
 					name={product.name}

@@ -91,3 +91,88 @@ module.exports.toppingsAddOne = function (req, res) {
 			}
 		});
 };
+
+module.exports.toppingsUpdateOne = function (req, res) {
+	let productid;
+	Topping
+		.findById(req.params.toppingid, function (err, topping) {
+			if (err) {
+				res
+					.status(400)
+					.json(err);
+			} else {
+				productid = topping.product;
+			}
+		});
+
+	console.log(`Product: ${productid}`);
+	console.log(`Topping: ${toppingid}`);
+	Product
+		.update(
+			{_id: productid},
+			{$pull: {toppings: req.params.toppingid}}
+		).exec();
+
+	Topping
+		.findByIdAndUpdate(req.params.toppingid, {
+			$set: {
+				name: req.body.name,
+				price: parseFloat(req.body.price),
+				product: req.body.product
+			}
+		}, function (err, updatedTopping) {
+			if (err) {
+				res
+					.status(400)
+					.json(err);
+			} else {
+				Product
+					.update(
+						{_id: req.body.product},
+						{$push : {toppings: req.body.toppingid}},
+					)
+					.exec();
+
+				res
+					.status(201)
+					.json(updatedTopping);
+			}
+		});
+};
+
+module.exports.toppingsDeleteOne = function (req, res) {
+	Topping
+		.findById(req.params.toppingid, function (err, toppingToDelete) {
+			if (err) {
+				res
+					.status(400)
+					.json(err);
+			} else if (toppingToDelete == null) {
+				res
+					.status(400)
+					.json({
+						"message": "Topping ID not found"
+					});
+			} else {
+				let productid = toppingToDelete.product;
+				Product
+					.update(
+						{_id: productid},
+						{$pull: {toppings: toppingToDelete._id}}
+					).exec();
+				toppingToDelete.remove(
+					function (err, deletedTopping) {
+						if (err) {
+							res
+								.status(400)
+								.json(err);
+						} else {
+							res
+								.status(200)
+								.json(deletedTopping);
+						}
+					}
+				);
+			}
+		})
+};

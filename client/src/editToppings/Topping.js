@@ -135,7 +135,7 @@ class Topping extends React.Component {
 					onClick={this.toggleEditing}
 				>
 					<td>{this.state.name}</td>
-					<td><Currency quantity={this.state.price} currency={"EUR"} /></td>
+					<td><Currency quantity={parseFloat(this.state.price)} currency={"EUR"} /></td>
 					<td>{productname}</td>
 					<td>&nbsp;</td>
 					<td>&nbsp;</td>

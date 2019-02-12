@@ -42,16 +42,15 @@ class AddTopping extends React.Component{
 		this.setState({
 			name: "",
 			price: 0,
+			product: Object.keys(this.state.products)[0]
 		});
 	}
 
 	addTopping(event) {
 		event.preventDefault();
-		console.log(this.state);
 		let price = parseFloat(this.state.price);
 
 		if (this.state.name !== "" && this.state.name !== null && !isNaN(price)) {
-			console.log(this.state.product);
 			axios
 				.post('/api/toppings', {
 					name: this.state.name,
@@ -94,7 +93,7 @@ class AddTopping extends React.Component{
 					</div>
 
 					<div className={'form-group'}>
-						<select onChange={this.updateProduct}>
+						<select onChange={this.updateProduct} value={this.state.product}>
 							{mappedProducts}
 						</select>
 					</div>

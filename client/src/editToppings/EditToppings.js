@@ -72,7 +72,7 @@ class EditToppings extends React.Component {
 					<tr>
 						<th className={'name'}>Naam</th>
 						<th className={'price'}>Prijs</th>
-						<th className={'colour'}>Producten</th>
+						<th className={'colour'}>Product</th>
 						<th className={'update'}>Bijwerken</th>
 						<th className={'delete'}>Verwijderen</th>
 					</tr>

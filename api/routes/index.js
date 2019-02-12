@@ -39,6 +39,8 @@ router
 router
 	.get('/toppings', ctrlTopping.toppingsGetAll)
 	.get('/toppings/:productid', ctrlTopping.toppingsGetForProduct)
-	.post('/toppings', ctrlTopping.toppingsAddOne);
+	.post('/toppings', ctrlTopping.toppingsAddOne)
+	.put('/toppings/:toppingid', ctrlTopping.toppingsUpdateOne)
+	.delete('/toppings/:toppingid', ctrlTopping.toppingsDeleteOne);
 
 module.exports = router;
