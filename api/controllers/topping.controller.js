@@ -93,7 +93,6 @@ module.exports.toppingsAddOne = function (req, res) {
 };
 
 module.exports.toppingsUpdateOne = function (req, res) {
-	let productid;
 	Topping
 		.findById(req.params.toppingid, function (err, topping) {
 			if (err) {
@@ -101,43 +100,45 @@ module.exports.toppingsUpdateOne = function (req, res) {
 					.status(400)
 					.json(err);
 			} else {
-				productid = topping.product;
-			}
-		});
+				let productid = topping.product;
+				let toppingid = topping._id;
 
-	console.log(`Product: ${productid}`);
-	console.log(`Topping: ${toppingid}`);
-	Product
-		.update(
-			{_id: productid},
-			{$pull: {toppings: req.params.toppingid}}
-		).exec();
-
-	Topping
-		.findByIdAndUpdate(req.params.toppingid, {
-			$set: {
-				name: req.body.name,
-				price: parseFloat(req.body.price),
-				product: req.body.product
-			}
-		}, function (err, updatedTopping) {
-			if (err) {
-				res
-					.status(400)
-					.json(err);
-			} else {
+				console.log(`Product: ${productid}`);
+				console.log(`Topping: ${toppingid}`);
 				Product
 					.update(
-						{_id: req.body.product},
-						{$push : {toppings: req.body.toppingid}},
-					)
-					.exec();
+						{_id: productid},
+						{$pull: {toppings: req.params.toppingid}}
+					).exec();
 
-				res
-					.status(201)
-					.json(updatedTopping);
+				Topping
+					.findByIdAndUpdate(req.params.toppingid, {
+						$set: {
+							name: req.body.name,
+							price: parseFloat(req.body.price),
+							product: req.body.product
+						}
+					}, function (err, updatedTopping) {
+						if (err) {
+							res
+								.status(400)
+								.json(err);
+						} else {
+							Product
+								.update(
+									{_id: req.body.product},
+									{$push : {toppings: updatedTopping}},
+								)
+								.exec();
+
+							res
+								.status(201)
+								.json(updatedTopping);
+						}
+					});
 			}
 		});
+
 };
 
 module.exports.toppingsDeleteOne = function (req, res) {

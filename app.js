@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var printing = require('./printing/printer');
 
 var dotenv = require('dotenv');
 dotenv.config();
@@ -51,5 +52,8 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+// printing.testPrinter();
+printing.initPrinter();
 
 module.exports = app;

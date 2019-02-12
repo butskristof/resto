@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var Order = mongoose.model('Order');
+var printing = require('../../printing/printer');
 
 module.exports.ordersGetAll = function (req, res) {
 	// set default offset and count
@@ -100,11 +101,15 @@ function createTicket(order) {
 	// add exception for soup
 	let ticket = [];
 	// let soupTicket = [];
-	ticket.push("LOGO");
-	ticket.push("Restaurandag 2019");
-	ticket.push("=================================")
+	ticket.push("Tafel:");
+	ticket.push(" ");
+	ticket.push(" ");
+	ticket.push("============================");
+	ticket.push(" ");
+
+	ticket.push("Bestelde gerechten:");
 	order.body.orderlines.forEach(ol => {
-		ticket.push(`${ol.quantity}x\t\t${ol.fullname}`);
+		ticket.push(`${ol.quantity}x ${ol.fullname}`);
 	});
 	let total;
 	if (order.body.leiding || order.body.helper) {
@@ -112,8 +117,17 @@ function createTicket(order) {
 	} else {
 		total = order.body.totalprice;
 	}
-	ticket.push("=================================")
-	ticket.push(`Totaal:\t\t${total.toFixed(2)} EUR`); // align total left
+
+	ticket.push(" ");
+	ticket.push("============================");
+	ticket.push(" ");
+
+	ticket.push(`Totaal: ${total.toFixed(2)} EUR`); // align total left
+	ticket.push(" ");
+	ticket.push(" ");
+
+	printing.printText(ticket);
 
 	ticket.forEach(line => console.log(line));
+
 }
