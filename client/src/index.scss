@@ -64,6 +64,64 @@ body{
 				.col-sm:nth-of-type(1){
 					height: 80vh;
 					overflow: auto;
+					.topping{
+						margin: -20px 25px 25px 25px;
+						padding-top: 25px;
+						border-radius: 5px;
+						font-family: inherit;
+						text-align: center;
+						font-weight: bold;
+						font-size: 16px;
+						background: whitesmoke;
+						label{
+							float: left;
+							line-height: 30px;
+							width: 100%;
+							display: block;
+							text-align: left;
+							&:nth-of-type(1){
+								padding-top: 20px;
+							}
+							input{
+								width: 20px;
+								height: 20px;
+								background: white;
+								border-radius: 0px;
+								padding: 2px;
+								display: block;
+								margin-right: 10px;
+								float: left;
+								margin-left: 20px;
+								margin-top: 7px;
+							}
+						}
+						.bestelknop{
+							width: 200px;
+							display: block;
+							float: right;
+							height: 50px;
+							line-height: 50px;
+							background: white;
+							border: 2px solid $prim-groen;
+							color: $prim-groen;
+							border-radius: 5px;
+							margin-right: 10px;
+							padding: 0px;
+							transition: all .3s ease;
+							&:focus{
+								outline: none;
+							}
+							&:hover{
+								cursor: pointer;
+								background: $prim-groen;
+								color: white;
+								transition: all .3s ease;
+							}
+						}
+						.clear{
+							clear: both;
+						}
+					}
 					button{
 						width: 100%;
 						margin-bottom: 10px;

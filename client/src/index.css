@@ -37,6 +37,56 @@ body {
         body #root main .row .col-sm:nth-of-type(1) {
           height: 80vh;
           overflow: auto; }
+          body #root main .row .col-sm:nth-of-type(1) .topping {
+            margin: -20px 25px 25px 25px;
+            padding-top: 25px;
+            border-radius: 5px;
+            font-family: inherit;
+            text-align: center;
+            font-weight: bold;
+            font-size: 16px;
+            background: whitesmoke; }
+            body #root main .row .col-sm:nth-of-type(1) .topping label {
+              float: left;
+              line-height: 30px;
+              width: 100%;
+              display: block;
+              text-align: left; }
+              body #root main .row .col-sm:nth-of-type(1) .topping label:nth-of-type(1) {
+                padding-top: 20px; }
+              body #root main .row .col-sm:nth-of-type(1) .topping label input {
+                width: 20px;
+                height: 20px;
+                background: white;
+                border-radius: 0px;
+                padding: 2px;
+                display: block;
+                margin-right: 10px;
+                float: left;
+                margin-left: 20px;
+                margin-top: 7px; }
+            body #root main .row .col-sm:nth-of-type(1) .topping .bestelknop {
+              width: 200px;
+              display: block;
+              float: right;
+              height: 50px;
+              line-height: 50px;
+              background: white;
+              border: 2px solid #8BC53F;
+              color: #8BC53F;
+              border-radius: 5px;
+              margin-right: 10px;
+              padding: 0px;
+              transition: all .3s ease; }
+              body #root main .row .col-sm:nth-of-type(1) .topping .bestelknop:focus {
+                outline: none; }
+              body #root main .row .col-sm:nth-of-type(1) .topping .bestelknop:hover {
+                cursor: pointer;
+                background: #8BC53F;
+                color: white;
+                transition: all .3s ease; }
+            body #root main .row .col-sm:nth-of-type(1) .topping .clear {
+              clear: both; }
           body #root main .row .col-sm:nth-of-type(1) button {
             width: 100%;
             margin-bottom: 10px;

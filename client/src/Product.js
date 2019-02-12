@@ -66,7 +66,7 @@ class Product extends React.Component {
 
 		if (toppingsAvailable) {
 			toppings = (
-				<div>
+				<div className="topping">
 					Beschikbare toppings <br />
 
 					{this.props.toppings.map(topping => (
@@ -74,16 +74,16 @@ class Product extends React.Component {
 							<input type="checkbox"
 								   value={topping._id}
 								   checked={this.state.checkboxValues[topping._id]}
-								   onClick={(ev) => this.toppingsChanged(ev, topping._id)}
+								   onChange={(ev) => this.toppingsChanged(ev, topping._id)}
 							/>
 							{topping.name} - <Currency quantity={topping.price} currency={"EUR"}/>
 						</label>
 					))}
 
-					<button className={"btn-order"} onClick={this.addToOrder}>
+					<button className={"btn-order bestelknop"} onClick={this.addToOrder}>
 						Bestel
 					</button>
-
+					<div className={"clear"}></div>
 				</div>
 			);
 
