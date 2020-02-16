@@ -13,7 +13,7 @@
     "dotenv": "^5.0.0",
     "ejs": "~2.5.7",
     "express": "^4.16.4",
-    "mongoose": "^5.4.11",
+    "mongoose": "^5.7.5",
     "morgan": "^1.9.1",
     "node-thermal-printer": "^2.0.1",
     "npm": "^6.13.7",
