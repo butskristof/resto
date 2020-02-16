@@ -99,7 +99,7 @@ module.exports.ordersAddOne = function (req, res) {
 
 const ticketIntro = ["Tafel:", " ", " ", "============================", " ", "Bestelde gerechten:"];
 const ticketMiddle = [" ", "============================", " "];
-const ticketOutro = [" ", " ", " ", " ", "© 2019 KLJ Wiekevorst"];
+const ticketOutro = [" ", " ", " ", " ", "© 2020 KLJ Wiekevorst"];
 
 function createTicket(order) {
 	// add exception for soup
